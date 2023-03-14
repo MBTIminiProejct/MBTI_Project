@@ -583,7 +583,7 @@ $("input[name=myRadio4]").mouseup(function() {
 			
 		},
 		error: function(data) {
-		alert('ajax 실패!');
+		alert('ajax 실시ㄹ패!');
 		}
 	});
 })
