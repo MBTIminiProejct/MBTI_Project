@@ -59,7 +59,6 @@ public class BattleController {
 	@GetMapping
 	public String battle(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo myCharacter, @ModelAttribute("myUser") User myUser,
 			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser, String battleField) {
-		log.debug("싸우기");
 		
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
 		return "battleEnd";
@@ -72,14 +71,6 @@ public class BattleController {
 		// 내캐릭터 받아오기
 		log.debug(user);
 		return "searchBattleUser";
-	}
-	
-	@GetMapping(value = "prepareBattle")
-	public String prepareBattle(Model model) {
-		User user = (User)model.getAttribute("myUser");
-		log.debug(user);
-		log.debug(user.getUserName() + "대결준비");
-		return null;
 	}
 	
 	@GetMapping(value = "ranking")

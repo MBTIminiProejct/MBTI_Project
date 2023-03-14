@@ -50,10 +50,10 @@
 	<form action="/springmbti/battle" method="get">
 		장소를 고르세요
 		<select name="battleField">
-			<option value="0">없음</option>
-			<option value="1">놀이동산</option>
-			<option value="2">계획없이 떠나게된 여행</option>
-			<option value="3">도서관</option>
+			<option value="없음">없음</option>
+			<option value="놀이동산">놀이동산</option>
+			<option value="계획없이 떠나게된 여행">계획없이 떠나게된 여행</option>
+			<option value="도서관">도서관</option>
 		</select>
 		<input type="submit" value="싸우자!">
 	</form>

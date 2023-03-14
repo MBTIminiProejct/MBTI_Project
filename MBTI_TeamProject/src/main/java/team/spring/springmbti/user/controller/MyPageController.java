@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -67,10 +66,11 @@ public class MyPageController {
       
       User user = (User)session.getAttribute("myUser");
       int userNum = service.getUserNum(user);
+      user = service.getUserInfo(Integer.toString(userNum));
       int userCharacterNum = service.getUserCharacterNum(userNum);
       character = cService.getCharacter(userCharacterNum);
       log.debug(character);
-      model.addAttribute("myNum", userNum);
+      model.addAttribute("myUser", user);
       model.addAttribute("myCharacter", character);
       
       return "userMyPage";
