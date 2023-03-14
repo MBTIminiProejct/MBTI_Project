@@ -99,6 +99,7 @@ display:none;}
 		<button id="next4" type="submit" onclick="sbutton4()">제출</button>
 	</form>
 	</div>	
+	<input type="text" value="${ myUser }"/>
 </body>
 <script>
 $("input[name=myRadio1]").mouseup(function() {

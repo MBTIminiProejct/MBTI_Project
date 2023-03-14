@@ -130,10 +130,5 @@ public class MyPageController {
 		model.addAttribute("battleCharacter", character);
 		return "prepBattle";
 	}
-    @PostMapping(value="moveSurvey")
-    public String moveSurvey() {
-         log.debug("성공적인 설문조사 이동!");
-         
-         return "survey/survey1";
-    }
+	
 }
