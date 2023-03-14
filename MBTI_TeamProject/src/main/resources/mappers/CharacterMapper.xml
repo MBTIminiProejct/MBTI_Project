@@ -7,9 +7,9 @@
 <mapper namespace="myCharacter">
    
    <insert id="insertCharacter" parameterType="CharacterInfo">
-      INSERT INTO characterInfo(characterHP, characterAD, characterAP, characterADDefence, characterAPDefence,
+      INSERT INTO characterInfo(characterUserEmail, characterHP, characterAD, characterAP, characterADDefence, characterAPDefence,
       							characterSpeed, characterHitRate, characterAvoidanceRate, characterCritical, characterAdditionalDmg) 
-			VALUES(#{characterHP}, #{characterAD}, #{characterAP}, #{characterADDefence}, #{characterAPDefence}, #{characterSpeed}, 
+			VALUES(#{characterUserEmail},#{characterHP}, #{characterAD}, #{characterAP}, #{characterADDefence}, #{characterAPDefence}, #{characterSpeed}, 
 				   #{characterHitRate}, #{characterAvoidanceRate}, #{characterCritical}, #{characterAdditionalDmg})
    </insert>
 
