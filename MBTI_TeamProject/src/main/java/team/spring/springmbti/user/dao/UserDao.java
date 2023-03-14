@@ -1,5 +1,7 @@
 package team.spring.springmbti.user.dao;
 
+import java.util.List;
+
 import team.spring.springmbti.battle.vo.BattleLog;
 import team.spring.springmbti.user.vo.User;
 
@@ -24,6 +26,8 @@ public interface UserDao {
 	int updateWinnerPoint(BattleLog battleLog);
 
 	int updateLoserPoint(BattleLog battleLog);
+
+	List<User> getRanking(int cnt);
 
 	
 }

@@ -2,6 +2,7 @@ package team.spring.springmbti.user.dao;
 
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
@@ -98,6 +99,12 @@ public class UserDaoImpl implements UserDao {
 	public int updateLoserPoint(BattleLog battleLog) {
 		int count = session.update("myUser.updateLoserPoint", battleLog);
 		return count;
+	}
+
+	@Override
+	public List<User> getRanking(int cnt) {
+		List<User> list = session.selectList("myUser.getRanking", cnt);
+		return list;
 	}
 
 	
