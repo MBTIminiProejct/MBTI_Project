@@ -23,5 +23,5 @@
 hs_err_pid*
 
 # custom
-/target/classes/META-INF/*.Mf
+/target/classes/META-INF/*.MF
 *.properties

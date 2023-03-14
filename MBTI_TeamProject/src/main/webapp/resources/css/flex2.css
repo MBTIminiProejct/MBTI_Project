@@ -1,0 +1,21 @@
+
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+body {
+    margin : 0;
+    padding : 0;
+    border:1px solid red;
+}
+#container {
+    height: 100vh;
+    border:1px solid red;
+}
+
+.temp-flex {
+	display: flex;
+	flex-direction: row;
+	
+}
