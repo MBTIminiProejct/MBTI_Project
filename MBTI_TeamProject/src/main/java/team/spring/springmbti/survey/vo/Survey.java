@@ -1,4 +1,4 @@
-package team.spring.springmbti.user.vo;
+package team.spring.springmbti.survey.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
