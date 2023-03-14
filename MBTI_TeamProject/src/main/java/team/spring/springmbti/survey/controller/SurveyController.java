@@ -13,9 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -28,6 +30,7 @@ import team.spring.springmbti.user.vo.User;
  * Handles requests for the application home page.
  */
 @Controller
+@SessionAttributes(value= {"myUser"})
 @RequestMapping(value = "survey")
 public class SurveyController {
 	
@@ -35,6 +38,12 @@ public class SurveyController {
 	private SurveyService surveyservice;
 	
 	Logger log = LogManager.getLogger("case3");
+	
+	@ModelAttribute("myUser")
+	public User createUser() {
+		User user = new User();
+		return user;
+	}
 	
 	@PostMapping("surveyone")
 	public String handler() {
@@ -137,7 +146,7 @@ public class SurveyController {
 	}	
 	
 	@PutMapping("sbutton1")
-	public void handler001(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void handler001(Model model, @ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler001() 성공");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
@@ -149,13 +158,13 @@ public class SurveyController {
 		int total = qtotal - 15;
 		int nqtotal = total*-1;
 		
-		user = (User)session.getAttribute("myUser");
+		//user = (User)session.getAttribute("myUser");
 		user.setUserI(nqtotal);
 		user.setUserE(qtotal);
 		log.debug(user);
 		
-		session.setAttribute("myUser", user);
-		
+		// session.setAttribute("myUser", user);
+		model.addAttribute("myUser", user);
 		surveyservice.updateScoreOne(user);
 		
 		Gson gson = new Gson();
@@ -166,7 +175,7 @@ public class SurveyController {
 	}
 	
 	@PutMapping("sbutton2")
-	public void handler002(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void handler002(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler002() 괜찮슴");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
@@ -178,12 +187,13 @@ public class SurveyController {
 		int total = qtotal - 15;
 		int nqtotal = total*-1;
 		
-		user = (User)session.getAttribute("myUser");
+		//user = (User)session.getAttribute("myUser");
 		user.setUserN(nqtotal);
 		user.setUserS(qtotal);
 		
-		session.setAttribute("myUser", user);
+		//session.setAttribute("myUser", user);
 		log.debug(user);
+		model.addAttribute("myUser", user);
 		surveyservice.updateScoreTwo(user);
 		
 		Gson gson = new Gson();
@@ -194,7 +204,7 @@ public class SurveyController {
 	}
 	
 	@PutMapping("sbutton3")
-	public void handler003(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void handler003(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler003() 성공");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
@@ -206,12 +216,13 @@ public class SurveyController {
 		int total = qtotal - 15;
 		int nqtotal = total*-1;
 		
-		user = (User)session.getAttribute("myUser");
+		//user = (User)session.getAttribute("myUser");
 		user.setUserT(nqtotal);
 		user.setUserF(qtotal);
 		
-		session.setAttribute("myUser", user);
+		//session.setAttribute("myUser", user);
 		log.debug(user);
+		model.addAttribute("myUser", user);
 		surveyservice.updateScoreThree(user);
 		
 		Gson gson = new Gson();
@@ -222,7 +233,7 @@ public class SurveyController {
 	}
 	
 	@PutMapping("sbutton4")
-	public void handler004(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void handler004(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("handler004() 성공");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
@@ -233,17 +244,54 @@ public class SurveyController {
 		int qtotal = qone + qtwo + qthree + qfour + qfive;
 		int total = qtotal - 15;
 		int nqtotal = total*-1;
+		String typeone = new String();
+		String typetwo = new String();
+		String typethree = new String();
+		String typefour = new String();
+		String mbti = new String();
 		
-		user = (User)session.getAttribute("myUser");
 		user.setUserP(nqtotal);
 		user.setUserJ(qtotal);
+		model.addAttribute("myUser", user);
+		User usertotal = (User)session.getAttribute("myUser");
+		//session.setAttribute("myUser", user);
 		
-		session.setAttribute("myUser", user);
-		log.debug(user);
+		int lone = usertotal.getUserE();
+		int ltwo = usertotal.getUserI();
+		int lthree = usertotal.getUserS();
+		int lfour = usertotal.getUserN();
+		int lfive = usertotal.getUserF();
+		int lsix = usertotal.getUserT();
+		int lseven = usertotal.getUserJ();
+		int leight = usertotal.getUserP();
 		
+		if (lone > ltwo) {
+			typeone = "E";
+		} else {
+			typeone = "I";
+		}
+		
+		if (lthree > lfour) {
+			typetwo = "S";
+		} else {
+			typetwo = "N";
+		}
+
+		if (lfive > lsix) {
+			typethree = "F";
+		} else {
+			typethree = "T";
+		}
+		
+		if (lseven > leight) {
+			typefour = "J";
+		} else {
+			typefour = "P";
+		}
+		
+		mbti = typeone + typetwo + typethree + typefour;
+		user.setUserMBTI(mbti);
 		surveyservice.updateScoreFour(user);
-		
-		
 		
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
