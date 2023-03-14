@@ -65,7 +65,7 @@
           <!-- <button onclick="location.href='/springmbti/mypage/deleteCharacter'">캐릭터 삭제하기</button> -->
              <button onclick="myFunc1()">내 캐릭터 삭제하기</button>
             <a href="/springmbti/mypage/searchBattleUser"><button>대결하기</button></a>
-            <form action="/springmbti/mypage/moveSurvey" method="post"
+            <form action="/springmbti/survey/surveyone" method="post"
                   disabled="disabled">
                 <input type="submit" value="설문조사">
             </form>
@@ -73,7 +73,7 @@
       </c:when>
       
       <c:otherwise>
-          <form action="/springmbti/mypage/moveSurvey" method="post">
+          <form action="/springmbti/survey/surveyone" method="post">
                 <input type="submit" value="설문조사">
             </form>
             <button disabled="disabled">내 캐릭터 삭제하기</button>

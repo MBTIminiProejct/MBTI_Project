@@ -10,10 +10,6 @@
             append="true">
             <PatternLayout pattern="%d - %m%n" />
         </File>
-        <File name="File_3" fileName="/Users/noseung-in/Desktop/KOSA/log/battleLog.log"
-            append="true">
-            <PatternLayout pattern="%d - %m%n" />
-        </File>
         <Console name="stdout_1" target="SYSTEM_OUT">
             <PatternLayout pattern="%p == %m == %d%n" />
         </Console>
@@ -38,11 +34,6 @@
         <Logger name="case3" level="debug" additivity="false">
             <AppenderRef ref="stdout_1" />
             <AppenderRef ref="File_1" />
-        </Logger>
-        
-        <Logger name="case4" level="debug" additivity="false">
-            <AppenderRef ref="stdout_1" />
-            <AppenderRef ref="File_3" />
         </Logger>
         
         <!-- <Logger name="myBoard" level="trace"></Logger> -->

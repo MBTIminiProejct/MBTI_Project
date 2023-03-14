@@ -19,9 +19,9 @@
 	 <!-- 별명지정하는게 나와요! 타이핑 줄이기위해서 사용해요! -->
 	 <typeAliases>
 
-	 	<typeAlias type="team.spring.springmbti.user.vo.User" alias="Survey"/>
+	 	 
 
-	 	
+	 	<typeAlias type="team.spring.springmbti.user.vo.User" alias="Survey"/> 
 	 	<typeAlias type="team.spring.springmbti.user.vo.User" alias="User"/>
 	 	<typeAlias type="team.spring.springmbti.character.vo.CharacterInfo" alias="CharacterInfo"/>
 	 	<typeAlias type="team.spring.springmbti.battle.vo.BattleLog" alias="battleLog"/>

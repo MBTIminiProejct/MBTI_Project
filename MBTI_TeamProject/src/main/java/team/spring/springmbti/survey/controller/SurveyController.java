@@ -37,40 +37,40 @@ public class SurveyController {
 	Logger log = LogManager.getLogger("case3");
 	
 	@PostMapping("surveyone")
-	public String handler(Model model) {
-		log.debug("handler() s»£√‚ - ¿œ¥‹ø¨Ω¿");
+	public String handler() {
+		log.debug("handler() ÏÑ±Í≥µ");
 		
 		
 		return "survey/survey1";
 	}
 	
 	@PostMapping("surveytwo")
-	public String handler1(Model model) {
-		log.debug("handler1() »£√‚ - ¿œ¥‹ø¨Ω¿");
+	public String handler1() {
+		log.debug("handler1() ÏÑ±Í≥µ");
 		
 		
 		return "survey/survey2";
 	}
 	
 	@PostMapping("surveythree")
-	public String handler2(Model model) {
-		log.debug("handler2() »£√‚ - ¿œ¥‹ø¨Ω¿");
+	public String handler2() {
+		log.debug("handler2() ÏÑ±Í≥µ");
 		
 		
 		return "survey/survey3";
 	}
 	
 	@PostMapping("surveyfour")
-	public String handler3(Model model) {
-		log.debug("handler3() »£√‚ - ¿œ¥‹ø¨Ω¿");
+	public String handler3() {
+		log.debug("handler3() ÏÑ±Í≥µ");
 		
 		
 		return "survey/survey4";
 	}
 	
 	@PostMapping("surveyfive")
-	public String handler4(Model model) {
-		log.debug("handler4() »£√‚ - ¿œ¥‹ø¨Ω¿");
+	public String handler4() {
+		log.debug("handler4() ÏÑ±Í≥µ");
 		
 		
 		return "survey/survey5";
@@ -78,7 +78,7 @@ public class SurveyController {
 	
 	@GetMapping("surveyone1")
 	public void handler01(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler01() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler01() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
 		int onum = Integer.parseInt(request.getParameter("onum"));
@@ -93,7 +93,7 @@ public class SurveyController {
 	
 	@GetMapping("surveytwo2")
 	public void handler02(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler02() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler02() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
 		int onum = Integer.parseInt(request.getParameter("onum"));
@@ -108,7 +108,7 @@ public class SurveyController {
 	
 	@GetMapping("surveythree3")
 	public void handler03(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler03() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler03() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
 		int onum = Integer.parseInt(request.getParameter("onum"));
@@ -123,7 +123,7 @@ public class SurveyController {
 	
 	@GetMapping("surveyfour4")
 	public void handler04(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler04() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler04() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qnum = Integer.parseInt(request.getParameter("qnum"));
 		int onum = Integer.parseInt(request.getParameter("onum"));
@@ -138,7 +138,7 @@ public class SurveyController {
 	
 	@PutMapping("sbutton1")
 	public void handler001(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler001() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler001() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
 		int qtwo = Integer.parseInt(request.getParameter("qtwo"));
@@ -152,7 +152,9 @@ public class SurveyController {
 		user = (User)session.getAttribute("myUser");
 		user.setUserI(nqtotal);
 		user.setUserE(qtotal);
-		log.debug("±¶¬˙Ωø");
+		log.debug(user);
+		
+		session.setAttribute("myUser", user);
 		
 		surveyservice.updateScoreOne(user);
 		
@@ -165,7 +167,7 @@ public class SurveyController {
 	
 	@PutMapping("sbutton2")
 	public void handler002(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler002() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler002() Í¥úÏ∞ÆÏä¥");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
 		int qtwo = Integer.parseInt(request.getParameter("qtwo"));
@@ -179,8 +181,9 @@ public class SurveyController {
 		user = (User)session.getAttribute("myUser");
 		user.setUserN(nqtotal);
 		user.setUserS(qtotal);
-		log.debug("±¶¬˙Ωø");
 		
+		session.setAttribute("myUser", user);
+		log.debug(user);
 		surveyservice.updateScoreTwo(user);
 		
 		Gson gson = new Gson();
@@ -192,7 +195,7 @@ public class SurveyController {
 	
 	@PutMapping("sbutton3")
 	public void handler003(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler003() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler003() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
 		int qtwo = Integer.parseInt(request.getParameter("qtwo"));
@@ -206,8 +209,9 @@ public class SurveyController {
 		user = (User)session.getAttribute("myUser");
 		user.setUserT(nqtotal);
 		user.setUserF(qtotal);
-		log.debug("±¶¬˙Ωø");
 		
+		session.setAttribute("myUser", user);
+		log.debug(user);
 		surveyservice.updateScoreThree(user);
 		
 		Gson gson = new Gson();
@@ -219,7 +223,7 @@ public class SurveyController {
 	
 	@PutMapping("sbutton4")
 	public void handler004(User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler004() »£√‚ - «¡∑Œ±◊∑πΩ∫πŸΩ√¿€");
+		log.debug("handler004() ÏÑ±Í≥µ");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
 		int qtwo = Integer.parseInt(request.getParameter("qtwo"));
@@ -233,9 +237,13 @@ public class SurveyController {
 		user = (User)session.getAttribute("myUser");
 		user.setUserP(nqtotal);
 		user.setUserJ(qtotal);
-		log.debug("±¶¬˙Ωø");
+		
+		session.setAttribute("myUser", user);
+		log.debug(user);
 		
 		surveyservice.updateScoreFour(user);
+		
+		
 		
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();

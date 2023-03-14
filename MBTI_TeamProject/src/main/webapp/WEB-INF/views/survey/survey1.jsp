@@ -99,6 +99,8 @@ display:none;}
 		<button id="next1" type="submit" onclick="sbutton1()">제출</button>
 	</form>
 	</div>	
+	
+	<input type="text" value="${ myUser }"/>
 </body>
 <script>
 $("input[name=myRadio1]").mouseup(function() {
@@ -583,7 +585,7 @@ $("input[name=myRadio4]").mouseup(function() {
 			
 		},
 		error: function(data) {
-		alert('ajax 실패!');
+		alert('ajax 실시ㄹ패!');
 		}
 	});
 })
