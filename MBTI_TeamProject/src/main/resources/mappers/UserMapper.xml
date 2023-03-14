@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myUser">
+
+   <select id="checkEmail" parameterType="String" resultType="User">
+      select * from users where userEmail=#{userEmail} 
+   </select>
+   
+   <insert id="insertUser" parameterType="User">
+      INSERT INTO users(userEmail,userName,userProfile) VALUES(#{userEmail},#{userName},#{userProfile})
+   </insert>
+   
+   <select id="getUserNum" parameterType="String" resultType="Integer">
+      select userNum from users where userEmail=#{userEmail}
+   </select>
+   
+   <select id="getUserCharacter" parameterType="Integer" resultType="Integer">
+      select userCharacter from users where userNum=#{userNum}
+   </select>
+   
+   <select id="getUserCharacterByEmail" parameterType="String" resultType="Integer">
+      select userCharacter from users where userEmail=#{userEmail}
+   </select>
+   
+   <update id="deleteUser" parameterType="HashMap">
+   	  update users set isOut='Y',outDate=#{outDate} where userEmail=#{userEmail}
+   </update>
+   
+   <update id="deleteCharacter" parameterType="Integer">
+   	  update users set userMBTI=NULL,userCharacter=1,
+   	  userI=0,userE=0,userS=0,userN=0,userT=0,userF=0,userP=0,userJ=0
+   	  where userCharacter=#{userCharacterNum}
+   </update>
+   
+   <select id="getUserInfoByUserNum" parameterType="String" resultType="User">
+      select * from users where userNum=#{battleUserNum} 
+   </select>
+
+ 	<update id="updateWinnerPoint" parameterType="battleLog">
+   	  update users set userWin = userWin + 1, userPoint = userPoint + #{winPoint}
+   	  where userNum =#{winnerNum}
+   </update>
+   
+   <update id="updateLoserPoint" parameterType="battleLog">
+   	  update users set userDefeat = userDefeat + 1, userPoint = userPoint + #{losePoint}
+   	  where userNum =#{loserNum}
+   </update>
+<!-- 회원탈퇴를 하면 isout이 n인지 data를 hashmap으로 받아오는 걸 -->
+
+   <!-- resultMap의 일반적인 사용법  property에 vo의 field명, column에 db의 column명이 다를 때 사용한다. 둘을 맞춰주는 역할-->
+   <!-- <resultMap id="result"
+      type="my.spring.springweb.sample11.vo.Book">
+      <result property="bookIsbn" column="bisbn" jdbcType="VARCHAR"
+         javaType="String" />
+      <result property="bookTitle" column="btitle" jdbcType="VARCHAR"
+         javaType="String" />
+      <result property="bookAuthor" column="bauthor" />
+      <result property="bookPrice" column="bprice" />
+   </resultMap>
+	 -->
+
+</mapper>
