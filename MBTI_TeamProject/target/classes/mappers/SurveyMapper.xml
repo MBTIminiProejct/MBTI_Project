@@ -29,7 +29,7 @@
    
    <update id="updatesurveyfour"	parameterType="User">
     <![CDATA[
-    UPDATE users SET userJ = #{userJ}, userP = #{userP}
+    UPDATE users SET userJ = #{userJ}, userP = #{userP}, userMBTI = #{userMBTI}
     WHERE userEmail = #{userEmail}
     ]]>
    </update>
