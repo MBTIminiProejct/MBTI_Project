@@ -29,28 +29,28 @@ opacity:0;}
 #radio-previous5{
 opacity:0;}
 
-#next3{
+#next1{
 display:none;}
 </style>
 </head>
 <body>
 	
 	<div class="box0" style="font-family:verdana; text-align: center"> 
-      <h1>3/4</h1>
-      <h3 style="font-family:courier">F or T</h3>
+      <h1>1/4</h1>
+      <h3 style="font-family:courier">이거 테스트용</h3>
    </div>
    <br>
-   <div class="box1" id = "boxf" style="font-family:verdana; text-align: center">
-   <label for="ffile">F</label>
-   <progress id="ffile" max="100" value="0"></progress>
+   <div class="box1" id = "boxe" style="font-family:verdana; text-align: center">
+   <label for="efile">E</label>
+   <progress id="efile" max="100" value="0"></progress>
 </div>
-	<div class="box2" id = "boxt" style="font-family:verdana; text-align: center">
-   <label for="tfile">T</label>
-   <progress id="tfile" max="100" value="0"></progress>
+	<div class="box2" id = "boxi" style="font-family:verdana; text-align: center">
+   <label for="ifile">I</label>
+   <progress id="ifile" max="100" value="0"></progress>
 </div>
    <br>
 	<div class="box3" style="font-family:verdana; text-align: center">
-	<h3>1. 다른 사람이 울고 있는 모습을 보면 자신도 울고 싶어질 때가 많다.</h3>
+	<h3>1. 친구에게 먼저 만나자고 연락하는 편이다.</h3>
 	<input type="radio" name="myRadio1" value="0">매우 아니다 
 	<input type="radio" name="myRadio1" value="1">아니다
 	<input type="radio" name="myRadio1" value="2">그렇다
@@ -59,16 +59,16 @@ display:none;}
 	</div>
 	<br>
 	<div class="box4" style="font-family:verdana; text-align: center">
-	<h3>2. 자신과 배경이 완전히 다른 사람에게도 쉽게 공감할 수 있다.</h3>
-	<input type="radio" name="myRadio2" value="0">매우 아니다 
-	<input type="radio" name="myRadio2" value="1">아니다
-	<input type="radio" name="myRadio2" value="2">그렇다
-	<input type="radio" name="myRadio2" value="3">매우 그렇다
+	<h3>2. 대부분의 시간을 혼자서 일할 수 있는 직업을 원한다.</h3>
+	<input type="radio" name="myRadio2" value="3">매우 아니다 
+	<input type="radio" name="myRadio2" value="2">아니다
+	<input type="radio" name="myRadio2" value="1">그렇다
+	<input type="radio" name="myRadio2" value="0">매우 그렇다
 	<input type="radio" id="radio-previous2" name="myRadio2" value="-100" checked="true"/>
 	</div>
 	<br>
 	<div class="box5" style="font-family:verdana; text-align: center">
-	<h3>3. 상대방의 감정을 바로 알아차릴 수 있다.</h3>
+	<h3>3. 관심이 가는 사람에게 다가가서 대화를 시작하기가 어렵지 않다.</h3>
 	<input type="radio" name="myRadio3" value="0">매우 아니다 
 	<input type="radio" name="myRadio3" value="1">아니다
 	<input type="radio" name="myRadio3" value="2">그렇다
@@ -77,7 +77,7 @@ display:none;}
 	</div>
 	<br>
 	<div class="box6" style="font-family:verdana; text-align: center">
-	<h3>4. 감정을 조절하기보다는 감정에 휘둘리는 편이다.</h3>
+	<h3>4. 단체 활동에 참여하는 일을 즐긴다.</h3>
 	<input type="radio" name="myRadio4" value="0">매우 아니다 
 	<input type="radio" name="myRadio4" value="1">아니다
 	<input type="radio" name="myRadio4" value="2">그렇다
@@ -86,17 +86,17 @@ display:none;}
 	</div>
 	<br>
 	<div class="box7" style="font-family:verdana; text-align: center">
-	<h3>5. 감정보다는 이성을 따르는 편이다.</h3>
-	<input type="radio" name="myRadio5" value="3">매우 아니다 
-	<input type="radio" name="myRadio5" value="2">아니다
-	<input type="radio" name="myRadio5" value="1">그렇다
-	<input type="radio" name="myRadio5" value="0">매우 그렇다
+	<h3>5. 혼자보다는 다른 사람과 시간을 보내고 싶어한다.</h3>
+	<input type="radio" name="myRadio5" value="0">매우 아니다 
+	<input type="radio" name="myRadio5" value="1">아니다
+	<input type="radio" name="myRadio5" value="2">그렇다
+	<input type="radio" name="myRadio5" value="3">매우 그렇다
 	<input type="radio" id="radio-previous5" name="myRadio5" value="-100" checked="true"/>
 	</div>
 	<br>
 	<div class="box8" style="font-family:verdana; text-align: center">
-	<form action="/springmbti/survey/surveyfour" method="post">
-		<button id="next3" type="submit" onclick="sbutton3()">제출</button>
+	<form action="/springmbti/survey/surveytwo" method="post">
+		<button id="next1" type="submit" onclick="sbutton1()">제출</button>
 	</form>
 	</div>	
 </body>
@@ -107,12 +107,12 @@ $("input[name=myRadio1]").mouseup(function() {
 }).change(function () {
 	var changenum = $('input[name=myRadio1]:checked').val();
 	
-	var foldValue = Number($('#ffile').attr("value"));
+	var eoldValue = Number($('#efile').attr("value"));
 	
-	var toldValue = Number($('#tfile').attr("value"));
+	var ioldValue = Number($('#ifile').attr("value"));
 	
 	$.ajax({
-		url : "surveythree3",
+		url : "surveyone1",
 		type : "GET",
 		async : "false",
 		dataType : "json",
@@ -125,59 +125,59 @@ $("input[name=myRadio1]").mouseup(function() {
 			
 			if (data['onum'] == 3) {
 				//console.log('3');
-				var fold = foldValue - 20;
+				var eold = eoldValue - 20;
 				
-				$('#ffile').attr("value",fold);
+				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
 				//console.log('2');
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
 				
-				var told = toldValue - 10;
+				var iold = ioldValue - 10;
 				
-				$('#tfile').attr("value",told);
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
 				//console.log('1');
-				var told = toldValue - 10;
-				$('#tfile').attr("value",told);
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
 				
 			} else if (data['onum'] == 0) {
 				//console.log('0');
-				var told = toldValue - 20;
-				$('#tfile').attr("value",told);
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var fold = Number($('#ffile').attr("value"));
+			var eold = Number($('#efile').attr("value"));
 			
-			var told = Number($('#tfile').attr("value"));
+			var iold = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
 				//console.log('3');
-				var number = fold + 20;
-				$('#ffile').attr("value",number);
+				var number = eold + 20;
+				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
 				//console.log('2');
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				var number = told + 10;
-				$('#tfile').attr("value",number);
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
 				//console.log('1');
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
+				var number = eold + 10;
+				$('#efile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
 				//console.log('0');
-				var number = told + 20;
-				$('#tfile').attr("value",number);
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
 		} else {
 			console.log('-1');
 		}	
@@ -215,7 +215,7 @@ $("input[name=myRadio1]").mouseup(function() {
 			var rtotal = r1 + r2 + r3 + r4 + r5;
 			
 			if (rtotal == 5) {
-				$('#next3').show();
+				$('#next1').show();
 			}
 			
 		},
@@ -226,22 +226,22 @@ $("input[name=myRadio1]").mouseup(function() {
 })
 
 $("input[name=myRadio2]").mouseup(function() {
-	 oldnum = $('input[name=myRadio2]:checked').val();
-	 
+	 oldnum= $('input[name=myRadio2]:checked').val();
+	//console.log(oldnum2);
 }).change(function () {
 	var changenum = $('input[name=myRadio2]:checked').val();
+	//console.log(changenum2);
+	var eoldValue = Number($('#efile').attr("value"));
 	
-	var foldValue = Number($('#ffile').attr("value"));
-	
-	var toldValue = Number($('#tfile').attr("value"));
+	var ioldValue = Number($('#ifile').attr("value"));
 	
 	$.ajax({
-		url : "surveythree3",
+		url : "surveyone1",
 		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 onum : oldnum ,		
+		 onum : oldnum,		
 		 qnum : changenum
 		},
 		success : function(data) {
@@ -249,59 +249,59 @@ $("input[name=myRadio2]").mouseup(function() {
 			
 			if (data['onum'] == 3) {
 				//console.log('3');
-				var fold = foldValue - 20;
+				var eold = eoldValue - 20;
 				
-				$('#ffile').attr("value",fold);
+				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
 				//console.log('2');
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
+				var iold = ioldValue - 10;
 				
-				var told = toldValue - 10;
-				
-				$('#tfile').attr("value",told);
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
 				//console.log('1');
-				var told = toldValue - 10;
-				$('#tfile').attr("value",told);
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);
+				var iold = ioldValue - 10;
+					
+				$('#ifile').attr("value",iold);
 				
 			} else if (data['onum'] == 0) {
 				//console.log('0');
-				var told = toldValue - 20;
-				$('#tfile').attr("value",told);
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var fold = Number($('#ffile').attr("value"));
+			var eold = Number($('#efile').attr("value"));
 			
-			var told = Number($('#tfile').attr("value"));
+			var iold = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
 				//console.log('3');
-				var number = fold + 20;
-				$('#ffile').attr("value",number);
+				var number = eold + 20;
+				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
 				//console.log('2');
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				var number = told + 10;
-				$('#tfile').attr("value",number);
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
 				
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
 				//console.log('1');
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
 				
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==0) {
 				//console.log('0');
-				var number = told + 20;
-				$('#tfile').attr("value",number);
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
 		} else {
 			console.log('-1');
 		}	
@@ -339,7 +339,7 @@ $("input[name=myRadio2]").mouseup(function() {
 			var rtotal = r1 + r2 + r3 + r4 + r5;
 			
 			if (rtotal == 5) {
-				$('#next3').show();
+				$('#next1').show();
 			}
 			
 		},
@@ -350,82 +350,78 @@ $("input[name=myRadio2]").mouseup(function() {
 })
 
 $("input[name=myRadio3]").mouseup(function() {
-	 oldnum = $('input[name=myRadio3]:checked').val();
+	 oldnum= $('input[name=myRadio3]:checked').val();
 	 
 }).change(function () {
 	var changenum = $('input[name=myRadio3]:checked').val();
 	
-	var foldValue = Number($('#ffile').attr("value"));
+	var eoldValue = Number($('#efile').attr("value"));
 	
-	var toldValue = Number($('#tfile').attr("value"));
+	var ioldValue = Number($('#ifile').attr("value"));
 	
 	$.ajax({
-		url : "surveythree3",
+		url : "surveyone1",
 		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 onum : oldnum ,		
+		 onum : oldnum,		
 		 qnum : changenum
 		},
 		success : function(data) {
 			var values = Object.values(data);
-			
+			console.log(values);
 			if (data['onum'] == 3) {
-				//console.log('3');
-				var fold = foldValue - 20;
-				
-				$('#ffile').attr("value",fold);
+				console.log('3');
+				var eold = eoldValue - 20;
+				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
-				
-				var told = toldValue - 10;
-				
-				$('#tfile').attr("value",told);
+				console.log('2');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
-				var told = toldValue - 10;
-				$('#tfile').attr("value",told);
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
-				
+				console.log('1');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
-				//console.log('0');
-				var told = toldValue - 20;
-				$('#tfile').attr("value",told);
+				console.log('0');
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var fold = Number($('#ffile').attr("value"));
-			
-			var told = Number($('#tfile').attr("value"));
+			var eold = Number($('#efile').attr("value"));
+			var iold = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
-				var number = fold + 20;
-				$('#ffile').attr("value",number);
-			} else if(data['qnum']==2) {
-				//console.log('2');
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				var number = told + 10;
-				$('#tfile').attr("value",number);
+				console.log('3');
+				var number = eold + 20;
+				$('#efile').attr("value",number);
 				
+			} else if(data['qnum']==2) {
+				console.log('2');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
-				//console.log('1');
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
+				console.log('1');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
-				var number = told + 20;
-				$('#tfile').attr("value",number);
+				console.log('0');
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
+				
 		} else {
 			console.log('-1');
 		}	
@@ -463,7 +459,7 @@ $("input[name=myRadio3]").mouseup(function() {
 			var rtotal = r1 + r2 + r3 + r4 + r5;
 			
 			if (rtotal == 5) {
-				$('#next3').show();
+				$('#next1').show();
 			}
 			
 		},
@@ -474,82 +470,77 @@ $("input[name=myRadio3]").mouseup(function() {
 })
 
 $("input[name=myRadio4]").mouseup(function() {
-	 oldnum = $('input[name=myRadio4]:checked').val();
-	 
+	 oldnum= $('input[name=myRadio4]:checked').val();
+	
 }).change(function () {
 	var changenum = $('input[name=myRadio4]:checked').val();
 	
-	var foldValue = Number($('#ffile').attr("value"));
+	var eoldValue = Number($('#efile').attr("value"));
 	
-	var toldValue = Number($('#tfile').attr("value"));
+	var ioldValue = Number($('#ifile').attr("value"));
 	
 	$.ajax({
-		url : "surveythree3",
+		url : "surveyone1",
 		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 onum : oldnum ,		
+		 onum : oldnum,		
 		 qnum : changenum
 		},
 		success : function(data) {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
-				var fold = foldValue - 20;
+				console.log('3');
+				var eold = eoldValue - 20;
 				
-				$('#ffile').attr("value",fold);
+				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
-				
-				var told = toldValue - 10;
-				
-				$('#tfile').attr("value",told);
+				console.log('2');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);	
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
-				var told = toldValue - 10;
-				$('#tfile').attr("value",told);
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
-				
+				console.log('1');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
-				//console.log('0');
-				var told = toldValue - 20;
-				$('#tfile').attr("value",told);
+				console.log('0');
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var fold = Number($('#ffile').attr("value"));
+			var eold = Number($('#efile').attr("value"));
 			
-			var told = Number($('#tfile').attr("value"));
+			var iold = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
-				var number = fold + 20;
-				$('#ffile').attr("value",number);
+				console.log('3');
+				var number = eold + 20;
+				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				
+				console.log('2');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
-				//console.log('1');
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				
+				console.log('1');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==0) {
-				//console.log('0');
-				var number = told + 20;
-				$('#tfile').attr("value",number);
+				console.log('0');
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
 		} else {
 			console.log('-1');
 		}	
@@ -587,7 +578,7 @@ $("input[name=myRadio4]").mouseup(function() {
 			var rtotal = r1 + r2 + r3 + r4 + r5;
 			
 			if (rtotal == 5) {
-				$('#next3').show();
+				$('#next1').show();
 			}
 			
 		},
@@ -598,82 +589,77 @@ $("input[name=myRadio4]").mouseup(function() {
 })
 
 $("input[name=myRadio5]").mouseup(function() {
-	 oldnum = $('input[name=myRadio5]:checked').val();
-	 
+	 oldnum= $('input[name=myRadio5]:checked').val();
+	
 }).change(function () {
 	var changenum = $('input[name=myRadio5]:checked').val();
 	
-	var foldValue = Number($('#ffile').attr("value"));
+	var eoldValue = Number($('#efile').attr("value"));
 	
-	var toldValue = Number($('#tfile').attr("value"));
+	var ioldValue = Number($('#ifile').attr("value"));
 	
 	$.ajax({
-		url : "surveythree3",
+		url : "surveyone1",
 		type : "GET",
 		async : "false",
 		dataType : "json",
 		data : { 
-		 onum : oldnum ,		
+		 onum : oldnum,		
 		 qnum : changenum
 		},
 		success : function(data) {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
-				var fold = foldValue - 20;
+				console.log('3');
+				var eold = eoldValue - 20;
 				
-				$('#ffile').attr("value",fold);
+				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
-				
-				var told = toldValue - 10;
-				
-				$('#tfile').attr("value",told);
+				console.log('2');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
-				var told = toldValue - 10;
-				$('#tfile').attr("value",told);
-				var fold = foldValue - 10;
-				$('#ffile').attr("value",fold);	
-				
+				console.log('1');
+				var eold = eoldValue - 10;
+				$('#efile').attr("value",eold);
+				var iold = ioldValue - 10;
+				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 0) {
-				//console.log('0');
-				var told = toldValue - 20;
-				$('#tfile').attr("value",told);
+				console.log('0');
+				var iold = ioldValue - 20;
+				$('#ifile').attr("value",iold);
 			} else {
 				console.log('-1');
 			}
 			
-			var fold = Number($('#ffile').attr("value"));
+			var eold = Number($('#efile').attr("value"));
 			
-			var told = Number($('#tfile').attr("value"));
+			var iold = Number($('#ifile').attr("value"));
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
-				var number = fold + 20;
-				$('#ffile').attr("value",number);
+				console.log('3');
+				var number = eold + 20;
+				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				
+				console.log('2');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
-				//console.log('1');
-				var number = told + 10;
-				$('#tfile').attr("value",number);
-				var number = fold + 10;
-				$('#ffile').attr("value",number);
-				
+				console.log('1');
+				var number = eold + 10;
+				$('#efile').attr("value",number);
+				var number = iold + 10;
+				$('#ifile').attr("value",number);
 			} else if(data['qnum']==0) {
-				//console.log('0');
-				var number = told + 20;
-				$('#tfile').attr("value",number);
+				console.log('0');
+				var number = iold + 20;
+				$('#ifile').attr("value",number);
 		} else {
 			console.log('-1');
 		}	
@@ -711,7 +697,7 @@ $("input[name=myRadio5]").mouseup(function() {
 			var rtotal = r1 + r2 + r3 + r4 + r5;
 			
 			if (rtotal == 5) {
-				$('#next3').show();
+				$('#next1').show();
 			}
 			
 		},
@@ -721,11 +707,9 @@ $("input[name=myRadio5]").mouseup(function() {
 	});
 })
 
-
-
-function sbutton3() {
+function sbutton1() {
 	$.ajax({
-		url : "sbutton3",
+		url : "sbutton1",
 		type : "PUT",
 		async : "false",
 		dataType : "json",

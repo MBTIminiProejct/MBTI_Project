@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mySurvey">
+	
+   <update id="updatesurveyone"	parameterType="User">
+    <![CDATA[
+    UPDATE users SET userI = #{userI}, userE = #{userE}
+    WHERE userEmail = #{userEmail}
+    ]]>
+   </update>
+  
+	<update id="updatesurveytwo"	parameterType="User">
+    <![CDATA[
+    UPDATE users SET userS = #{userS}, userN = #{userN}
+    WHERE userEmail = #{userEmail}
+    ]]>
+   </update>
+   
+   <update id="updatesurveythree"	parameterType="User">
+    <![CDATA[
+    UPDATE users SET userF = #{userF}, userT = #{userT}
+    WHERE userEmail = #{userEmail}
+    ]]>
+   </update>
+   
+   <update id="updatesurveyfour"	parameterType="User">
+    <![CDATA[
+    UPDATE users SET userJ = #{userJ}, userP = #{userP}
+    WHERE userEmail = #{userEmail}
+    ]]>
+   </update>
+
+</mapper>
