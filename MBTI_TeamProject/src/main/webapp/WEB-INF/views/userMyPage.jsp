@@ -47,6 +47,10 @@
 				<th>100</th>
 			</tr>
 		</tbody>
+
 	</table>
+	<form action="battle/ranking" method="get">
+		<input type="submit" value="랭킹보기">
+	</form>
 </body>
 </html>

@@ -33,5 +33,20 @@ public class User {
 	private Date initDate;
 	private String isout;
 	private Date outDate;
+	
+	public User(String userNum, String userName, String userMBTI, int userWin, int userDefeat, int userPoint,
+			boolean userAcceptance) {
+		super();
+		this.userNum = userNum;
+		this.userName = userName;
+		this.userMBTI = userMBTI;
+		this.userWin = userWin;
+		this.userDefeat = userDefeat;
+		this.userPoint = userPoint;
+		this.userAcceptance = userAcceptance;
+	}
+	
+	
 }
+
 

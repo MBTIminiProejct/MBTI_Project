@@ -1,5 +1,7 @@
 package team.spring.springmbti.battle.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +18,7 @@ import team.spring.springmbti.battle.service.BattleService;
 import team.spring.springmbti.battle.vo.BattleLog;
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
+import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
 @Controller
@@ -27,6 +30,9 @@ public class BattleController {
 	
 	@Autowired
 	BattleService service;
+	
+	@Autowired
+	UserService uService;
 	
 	@ModelAttribute("myCharacter")
 	public CharacterInfo createCharacter() {
@@ -73,6 +79,12 @@ public class BattleController {
 		User user = (User)model.getAttribute("myUser");
 		log.debug(user);
 		log.debug(user.getUserName() + "대결준비");
+		return null;
+	}
+	
+	@GetMapping(value = "ranking")
+	public String getRanking() {
+		List<User> list = uService.getRanking(10);
 		return null;
 	}
 }
