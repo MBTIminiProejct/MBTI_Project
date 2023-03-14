@@ -22,11 +22,11 @@ public class CharacterController {
 	public String createCharacter(Model model) {
 		log.debug("캐릭터생성");
 		CharacterInfo character = new CharacterInfo(100, 10, 10, 5, 5, 10, 10, 10, 30 ,0);
+//		로직짜기
 		
 		int result = service.createCharacter(character);
 		log.debug(result);
 		
 		return "resultPage";
 	}
-	
 }
