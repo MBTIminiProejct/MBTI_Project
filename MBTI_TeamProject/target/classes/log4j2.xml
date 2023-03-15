@@ -37,6 +37,7 @@
         </Logger>
         
         <!-- <Logger name="myBoard" level="trace"></Logger> -->
+        <Logger name="myCharacter" level="trace"></Logger>
   
         <Root level="INFO">
             <AppenderRef ref="stdout_2" />

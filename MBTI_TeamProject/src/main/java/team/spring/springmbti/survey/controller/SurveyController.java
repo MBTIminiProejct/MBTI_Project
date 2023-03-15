@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import team.spring.springmbti.character.service.CharacterService;
+import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.survey.service.SurveyService;
 import team.spring.springmbti.user.vo.User;
 
@@ -30,12 +32,15 @@ import team.spring.springmbti.user.vo.User;
  * Handles requests for the application home page.
  */
 @Controller
-@SessionAttributes(value= {"myUser"})
+@SessionAttributes(value= {"myUser","myCharacter"})
 @RequestMapping(value = "survey")
 public class SurveyController {
 	
 	@Autowired
 	private SurveyService surveyservice;
+	
+	@Autowired
+	private CharacterService characterservice;
 	
 	Logger log = LogManager.getLogger("case3");
 	
@@ -45,10 +50,27 @@ public class SurveyController {
 		return user;
 	}
 	
+	@ModelAttribute("myCharacter")
+	public CharacterInfo createCharacter() {
+		CharacterInfo characterinfo = new CharacterInfo();
+		return characterinfo;
+	}
+	
 	@PostMapping("surveyone")
-	public String handler() {
-		log.debug("handler() 성공");
+	public String handler(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
+		User userbefore = (User)session.getAttribute("myUser");
+		CharacterInfo character = 
+				new CharacterInfo(100, 10, 10, 5 , 5 , 10, 10 , 10 , 30  ,0 );
+		int result = characterservice.createCharacter(character);
+		log.debug("잘되고있는거니");
+		
+		int maxresult = characterservice.maxCharacter();
+		
+		user.setUserCharacter(maxresult); 
+		model.addAttribute("myUser", user);
 		
 		return "survey/survey1";
 	}
@@ -84,6 +106,25 @@ public class SurveyController {
 		
 		return "survey/survey5";
 	}
+	
+	@RequestMapping("/surveyresult")
+	   public String popup1(Model model,@ModelAttribute("myUser") User user, @ModelAttribute("myCharacter") CharacterInfo characterinfo, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  request.setCharacterEncoding("UTF-8");
+	      
+		  User usercurrent = (User)session.getAttribute("myUser");
+		  int characternum = usercurrent.getUserCharacter();
+		  log.debug(characternum);
+		  //CharacterInfo characterinfo = new CharacterInfo();
+		  //characterinfo.setCharacterNum(characternum);	
+		  //log.debug(characterinfo);
+		  characterinfo = characterservice.getCharacter(characternum);
+		  log.debug(characterinfo);
+		  model.addAttribute("myCharacter",characterinfo);
+		  
+		  log.debug("결과 출력 성공!");
+	      
+	      return "resultPage";
+	   }
 	
 	@GetMapping("surveyone1")
 	public void handler01(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -234,7 +275,6 @@ public class SurveyController {
 	
 	@PutMapping("sbutton4")
 	public void handler004(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.debug("handler004() 성공");
 		request.setCharacterEncoding("UTF-8");
 		int qone = Integer.parseInt(request.getParameter("qone"));
 		int qtwo = Integer.parseInt(request.getParameter("qtwo"));
@@ -292,6 +332,12 @@ public class SurveyController {
 		mbti = typeone + typetwo + typethree + typefour;
 		user.setUserMBTI(mbti);
 		surveyservice.updateScoreFour(user);
+		log.debug(user);
+		
+		CharacterInfo character = 
+				new CharacterInfo(usertotal.getUserCharacter(),100, 10 + lone, 10 + ltwo, 5 + lthree, 5 + lfour, 10, 10 + lfive, 10 + lsix, 30 + lseven ,0 + leight);
+		int characterresult = characterservice.updateCharacter(character);
+		log.debug("안녕");
 		
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
@@ -299,7 +345,8 @@ public class SurveyController {
 		String find = gson.toJson(jsonObject);
 		response.getWriter().write(find);
 	}
-	
+		
+		
 	
 }
 

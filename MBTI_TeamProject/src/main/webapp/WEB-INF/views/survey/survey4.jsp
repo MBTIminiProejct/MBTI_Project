@@ -95,11 +95,12 @@ display:none;}
 	</div>
 	<br>
 	<div class="box8" style="font-family:verdana; text-align: center">
-	<form action="/springmbti/survey/surveyfive" method="post">
-		<button id="next4" type="submit" onclick="sbutton4()">제출</button>
-	</form>
-	</div>	
-	<input type="text" value="${ myUser }"/>
+      
+         <button id="next4" onclick="sbutton4()">제출</button>
+      
+   </div>	
+	
+	
 </body>
 <script>
 $("input[name=myRadio1]").mouseup(function() {
@@ -724,34 +725,44 @@ $("input[name=myRadio5]").mouseup(function() {
 
 
 function sbutton4() {
-	$.ajax({
-		url : "sbutton4",
-		type : "PUT",
-		async : "false",
-		dataType : "json",
-		data : { qone: $('input[name=myRadio1]:checked').val(),
-				 qtwo: $('input[name=myRadio2]:checked').val(),
-				 qthree: $('input[name=myRadio3]:checked').val(),
-				 qfour: $('input[name=myRadio4]:checked').val(),
-				 qfive: $('input[name=myRadio5]:checked').val()
-				},
-		success : function(data) {
-			
-			//var values = Object.values(data);
-			
-			
-			//if(data['ajaxresult'] == 7){
-			
-			console.log('성공!!');
-			//} else {
-				
-			//}
-		},
-		error: function(data) {
-			alert('ajax 실패!');
-		}
-			
-	});
+	
+	var result = confirm("MBTI 설문조사 최종 제출하시겠습니까");
+    
+    if (result == true){  
+         // document.removefrm.submit();
+         
+         $.ajax({
+     		url : "sbutton4",
+     		type : "PUT",
+     		async : "false",
+     		dataType : "json",
+     		data : { qone: $('input[name=myRadio1]:checked').val(),
+     				 qtwo: $('input[name=myRadio2]:checked').val(),
+     				 qthree: $('input[name=myRadio3]:checked').val(),
+     				 qfour: $('input[name=myRadio4]:checked').val(),
+     				 qfive: $('input[name=myRadio5]:checked').val()
+     				},
+     		success : function(data) {
+     			
+     	     
+     			console.log('성공!!');
+     			let url = '/springmbti/survey/surveyresult'
+     		         location.replace(url);
+     			
+     		},
+     		error: function(data) {
+     			alert('ajax 실패!');
+     		}
+     			
+     	});
+         
+        } else {  
+           
+         result=false;
+         
+     }
+	
+	
 }
 
 </script>

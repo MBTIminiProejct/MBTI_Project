@@ -100,7 +100,7 @@ display:none;}
 	</form>
 	</div>	
 	
-	<input type="text" value="${ myUser }"/>
+	
 </body>
 <script>
 $("input[name=myRadio1]").mouseup(function() {

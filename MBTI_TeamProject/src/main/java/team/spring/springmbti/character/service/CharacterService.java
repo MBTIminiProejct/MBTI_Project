@@ -33,6 +33,29 @@ public class CharacterService {
 		
 		return character;
 	}
-
+	
+	public int maxCharacter() {
+		int maxcharacter = dao.getMaxCharacter();
+				
+		return maxcharacter;
+	}
+	
+	public int updateCharacter(CharacterInfo character) {
+		
+		int update = dao.updateCharacter(character);
+		if(update==1) {
+			log.debug("캐릭터 수정 성공");
+		}else {
+			log.debug("캐릭터 수정 실패");
+		}
+		return update;
+	}
+	
+	public CharacterInfo selectCharacter(CharacterInfo characterinfo) {
+		
+		CharacterInfo character = dao.selectCharacterByNumber(characterinfo);
+		
+		return character;
+	}
 
 }

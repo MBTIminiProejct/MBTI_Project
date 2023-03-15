@@ -36,21 +36,21 @@ public class CharacterController {
 		log.debug("캐릭터생성");
 		
 		
-		User usersum = (User)session.getAttribute("myUser");
-		
-		int cone = usersum.getUserE();
-		int ctwo = usersum.getUserI();
-		int cthree = usersum.getUserS();
-		int cfour = usersum.getUserN();
-		int cfive = usersum.getUserF();
-		int csix = usersum.getUserT();
-		int cseven = usersum.getUserJ();
-		int ceight = usersum.getUserP();
-		
-		CharacterInfo character = 
-				new CharacterInfo(usersum.getUserEmail(),100, 10 + cone, 10 + ctwo, 5 + cthree, 5 + cfour, 10, 10 + cfive, 10 + csix, 30 + cseven ,0 + ceight);
-		int result = service.createCharacter(character);
-		log.debug(result);
+//		User usersum = (User)session.getAttribute("myUser");
+//		
+//		int cone = usersum.getUserE();
+//		int ctwo = usersum.getUserI();
+//		int cthree = usersum.getUserS();
+//		int cfour = usersum.getUserN();
+//		int cfive = usersum.getUserF();
+//		int csix = usersum.getUserT();
+//		int cseven = usersum.getUserJ();
+//		int ceight = usersum.getUserP();
+//		
+//		CharacterInfo character = 
+//				new CharacterInfo(100, 10 + cone, 10 + ctwo, 5 + cthree, 5 + cfour, 10, 10 + cfive, 10 + csix, 30 + cseven ,0 + ceight);
+//		int result = service.createCharacter(character);
+//		log.debug(result);
 		
 		return "resultPage";
 	}
