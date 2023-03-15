@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 <%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +9,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/JavaScript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="resources/css/resultpage.css">
     <style>
 	ul {
@@ -22,6 +24,20 @@
     <div align="center"><h3>????입니다.</h3></div>
     <div align="center"><h1>당신의 캐릭터는 ???입니다.</h1></div>
     
+    
+    
+    <div align="center"><h3>당신의 MBTI는 ...</h3></div>
+    <div align="center"><h3>${ myUser.userMBTI }입니다.</h3></div>
+    <div align="center"><h4>당신의 캐릭터는 HP - ${ myCharacter.characterHP } <br>
+            물리공격력 - ${ myCharacter.characterAD } <br>
+            마법공격력 - ${ myCharacter.characterAP } <br>
+            물리방어력 - ${ myCharacter.characterADDefence } <br>
+            마법방어력 - ${ myCharacter.characterAPDefence } <br>
+               속도 - ${ myCharacter.characterSpeed } <br>
+            명중률 - ${ myCharacter.characterHitRate } <br>
+            회피율 - ${ myCharacter.characterAvoidanceRate } <br>
+            크리티컬 확률 - ${ myCharacter.characterCritical } <br>
+            기본추가공격력 - ${ myCharacter.characterAdditionalDmg } <br>입니다.</h4></div>
     <h3><CENTER>
 		<img
 		width="300"
