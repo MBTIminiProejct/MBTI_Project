@@ -9,9 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,14 +38,14 @@ public class LoginController {
 	Logger log = LogManager.getLogger("case3");
 	
 	
-	@ModelAttribute("myUser")
-	public User createUser() {
-		User user = new User();
-		return user;
-	}
+//	@ModelAttribute("myUser")
+//	public User createUser() {
+//		User user = new User();
+//		return user;
+//	}
 	
 	@GetMapping("test")
-	public Map<String, String> test(@RequestParam(value="nickname", required=false) String nickname,
+	public JSONObject test(@RequestParam(value="nickname", required=false) String nickname,
 			@RequestParam(value="email", required=false) String email,
 			@RequestParam(value="profile", required=false) String profile,
 			HttpSession session) {
@@ -53,13 +53,21 @@ public class LoginController {
 		log.debug("email" + email);
 		log.debug("profile" + profile);
 		
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("nickname", nickname);
 		map.put("email", email);
 		map.put("profile", profile);
-		session.setAttribute("myUser", map);
 		
-		return map;
+		JSONObject obj = new JSONObject(map);
+		
+		
+		User user = new User();
+		user.setUserName(nickname);
+		user.setUserEmail(email);
+		user.setUserProfile(profile);
+		session.setAttribute("myUser", user);
+		
+		return obj;
 		
 	}
 	
