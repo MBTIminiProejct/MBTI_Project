@@ -54,8 +54,8 @@ public class UserService {
 	public List<User> getRanking(int cnt) {
 		
 		List<User> list = dao.getRanking(cnt);
-		for (int i = 0; i <3; i++) {
-			log.debug(list.get(i));
+		for(User user : list) {
+			log.debug(user);
 		}
 		return list;
 	}
