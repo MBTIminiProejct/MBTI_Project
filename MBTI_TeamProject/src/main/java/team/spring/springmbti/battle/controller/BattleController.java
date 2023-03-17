@@ -60,6 +60,7 @@ public class BattleController {
 	public String battle(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo myCharacter, @ModelAttribute("myUser") User myUser,
 			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser, String battleField) {
 		
+		log.debug("들어온건가");
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
 		return "battleEnd";
 	}
