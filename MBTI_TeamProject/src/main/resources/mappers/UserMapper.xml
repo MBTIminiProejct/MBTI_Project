@@ -40,6 +40,12 @@
       select * from users where userNum=#{battleUserNum} 
    </select>
 
+	<update id="updateUserCharacter" parameterType="User">
+   	  update users 
+   	  set userCharacter = #{userCharacter}
+   	  where userEmail=#{userEmail}
+   </update>
+
  	<update id="updateWinnerPoint" parameterType="battleLog">
    	  update users set userWin = userWin + 1, userPoint = userPoint + #{winPoint}
    	  where userNum =#{winnerNum}

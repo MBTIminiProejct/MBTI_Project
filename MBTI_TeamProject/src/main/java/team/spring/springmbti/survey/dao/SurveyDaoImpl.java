@@ -25,9 +25,9 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveyone",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("¼º°ø!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		} else {
-			log.debug("½ÇÆÐ!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		}
 		//session.close();
 		return result;
@@ -38,9 +38,9 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveytwo",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("¼º°ø!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		} else {
-			log.debug("½ÇÆÐ!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		}
 		//session.close();
 		return result;
@@ -51,9 +51,9 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveythree",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("¼º°ø!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		} else {
-			log.debug("½ÇÆÐ!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		}
 		//session.close();
 		return result;
@@ -64,12 +64,25 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveyfour",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("¼º°ø!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		} else {
-			log.debug("½ÇÆÐ!");
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
 		}
 		//session.close();
 		return result;
 	}
-
+	
+	@Override
+	public int updateUserCharacter(User user) {
+		int result = session.update("myUser.updateUserCharacter",user);
+		if(result==1) {
+			//session.commit();
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
+		} else {
+			log.debug("ï¿½ï¿½ï¿½ï¿½!");
+		}
+		//session.close();
+		return result;
+	}
+	
 }

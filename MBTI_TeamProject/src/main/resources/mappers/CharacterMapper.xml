@@ -14,7 +14,7 @@
    </insert>
 
 	<select id="getCharacterByCharacterNum" parameterType="Integer" resultType="CharacterInfo">
-      select characterHP, characterAD, characterAP, characterADDefence, characterAPDefence,
+      select characterNum, characterHP, characterAD, characterAP, characterADDefence, characterAPDefence,
       		 characterSpeed, characterHitRate, characterAvoidanceRate, characterCritical, characterAdditionalDmg 
       from characterInfo where characterNum=#{userCharacterNum}
    </select>

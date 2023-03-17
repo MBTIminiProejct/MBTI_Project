@@ -23,36 +23,45 @@ public class SurveyService {
 	public void updateScoreOne(User user) {
 		int result = dao.updateSurveyOne(user);
 		if(result == 1) {
-			log.debug("Á¡¼ö ÀúÀå ¼º°ø");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} else {
-			log.debug("Á¡¼ö ÀúÀå ½ÇÆÐ");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 	}
 	
 	public void updateScoreTwo(User user) {
 		int result = dao.updateSurveyTwo(user);
 		if(result == 1) {
-			log.debug("Á¡¼ö ÀúÀå ¼º°ø");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} else {
-			log.debug("Á¡¼ö ÀúÀå ½ÇÆÐ");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 	}
 	
 	public void updateScoreThree(User user) {
 		int result = dao.updateSurveyThree(user);
 		if(result == 1) {
-			log.debug("Á¡¼ö ÀúÀå ¼º°ø");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} else {
-			log.debug("Á¡¼ö ÀúÀå ½ÇÆÐ");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 	}
 	
 	public void updateScoreFour(User user) {
 		int result = dao.updateSurveyFour(user);
 		if(result == 1) {
-			log.debug("Á¡¼ö ÀúÀå ¼º°ø");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		} else {
-			log.debug("Á¡¼ö ÀúÀå ½ÇÆÐ");
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		}
+	}
+	
+	public void updateUserCharacter(User user) {
+		int result = dao.updateUserCharacter(user);
+		if(result == 1) {
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		} else {
+			log.debug("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 	}
 
