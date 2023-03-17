@@ -68,11 +68,6 @@ public class LoginController {
 		log.debug("email - " + email);
 		log.debug("profile - " + profile);
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("nickname", nickname);
-		map.put("email", email);
-		map.put("profile", profile);
-//		session.setAttribute("myUser", map);
 		User user = new User();
 		user.setUserEmail(email);
 		user.setUserName(nickname);
@@ -83,6 +78,32 @@ public class LoginController {
 	    CharacterInfo character = new CharacterInfo();
 	    character = cService.getCharacter(userCharacterNum);
 	    
+	    Map<String, String> map = new HashMap<String, String>();
+	    map.put("num", user.getUserNum());
+		map.put("nickname", nickname);
+		map.put("email", email);
+		map.put("profile", profile);
+		map.put("chracter", Integer.toString(user.getUserCharacter()));
+		map.put("mbti", user.getUserMBTI());
+		map.put("win", Integer.toString(user.getUserWin()));
+		map.put("defeat", Integer.toString(user.getUserDefeat()));
+		map.put("point", Integer.toString(user.getUserPoint()));
+		map.put("item", Integer.toString(user.getUserItem()));
+		map.put("acceptance", user.getUserAcceptance());
+		
+		map.put("cNum", Integer.toString(character.getCharacterNum()));
+		map.put("hp", Double.toString(character.getCharacterHP()));
+		map.put("ad", Double.toString(character.getCharacterAD()));
+		map.put("ap", Double.toString(character.getCharacterAP()));
+		map.put("adDefence", Double.toString(character.getCharacterADDefence()));
+		map.put("apDefence", Double.toString(character.getCharacterAPDefence()));
+		map.put("speed", Double.toString(character.getCharacterSpeed()));
+		map.put("hitRate", Double.toString(character.getCharacterHitRate()));
+		map.put("avoidanceRate", Double.toString(character.getCharacterAvoidanceRate()));
+		map.put("critical", Double.toString(character.getCharacterCritical()));
+		map.put("additionalDmg", Double.toString(character.getCharacterAdditionalDmg()));
+		
+		
 	    session.setAttribute("myUser", user);
 	    session.setAttribute("myCharacter", character);
 	    

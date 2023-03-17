@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.client.HttpServerErrorException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -27,7 +29,7 @@ import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
 @Controller
-@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
+//@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
 @RequestMapping(value = "mypage")
 public class MyPageController {
    
@@ -44,11 +46,6 @@ public class MyPageController {
       CharacterInfo character = new CharacterInfo();
       return character;
    }
-   @ModelAttribute("myUser")
-   public User putUser() {
-      User user = new User();
-      return user;
-   }
    
    @ModelAttribute("battleCharacter")
    public CharacterInfo createBattleCharacter() {
@@ -62,7 +59,7 @@ public class MyPageController {
    }
    
    @GetMapping
-   public String myPage(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo character) {
+   public void myPage(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo character) {
       
       User user = (User)session.getAttribute("myUser");
       int userNum = service.getUserNum(user);
@@ -73,7 +70,6 @@ public class MyPageController {
       model.addAttribute("myUser", user);
       model.addAttribute("myCharacter", character);
       
-      return "userMyPage";
    }
    
    @DeleteMapping(value = "character")
@@ -119,16 +115,16 @@ public class MyPageController {
    }
 	
 	@GetMapping(value = "battleuser")
-	public String getUserInfo(HttpSession session, Model model, String battleUserNum, 
-			@ModelAttribute("battleCharacter") CharacterInfo character, @ModelAttribute("battleUser") User user) {
+	public String getUserInfo(HttpSession session, @RequestParam(value="battleUserNum", required=false) String battleUserNum) {
 
-		user = service.getUserInfo(battleUserNum);
-		character = cService.getCharacter(user.getUserCharacter());
-		log.debug("Test " + character);
 		
-		model.addAttribute("battleUser", user);
-		model.addAttribute("battleCharacter", character);
-		return "prepBattle";
+		User user = new User();
+		user = service.getUserInfo(battleUserNum);
+		CharacterInfo character = new CharacterInfo();
+		character = cService.getCharacter(user.getUserCharacter());
+		session.setAttribute("battleUser", user);
+		session.setAttribute("battleCharacter", character);
+		return "";
 	}
 	
 }
