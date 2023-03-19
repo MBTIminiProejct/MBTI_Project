@@ -1,6 +1,8 @@
 package team.spring.springmbti.user.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpServerErrorException;
 
@@ -28,9 +31,9 @@ import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
-@Controller
+@RestController
 //@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
-@RequestMapping(value = "mypage")
+@RequestMapping(value = "mypage", produces="application/json")
 public class MyPageController {
    
    Logger log = LogManager.getLogger("case3");
@@ -115,16 +118,43 @@ public class MyPageController {
    }
 	
 	@GetMapping(value = "battleuser")
-	public String getUserInfo(HttpSession session, @RequestParam(value="battleUserNum", required=false) String battleUserNum) {
+	public Map<String, String> getUserInfo(HttpSession session, @RequestParam(value="battleUserNum", required=false) String battleUserNum) {
 
-		
 		User user = new User();
 		user = service.getUserInfo(battleUserNum);
 		CharacterInfo character = new CharacterInfo();
 		character = cService.getCharacter(user.getUserCharacter());
 		session.setAttribute("battleUser", user);
 		session.setAttribute("battleCharacter", character);
-		return "";
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("bNum", user.getUserNum());
+		map.put("bNickname", user.getUserName());
+		map.put("bEmail", user.getUserEmail());
+		map.put("bProfile", user.getUserProfile());
+		map.put("bChracter", Integer.toString(user.getUserCharacter()));
+		map.put("bMbti", user.getUserMBTI());
+		map.put("bWin", Integer.toString(user.getUserWin()));
+		map.put("bDefeat", Integer.toString(user.getUserDefeat()));
+		map.put("bPoint", Integer.toString(user.getUserPoint()));
+		map.put("bItem", Integer.toString(user.getUserItem()));
+		map.put("bAcceptance", user.getUserAcceptance());
+		
+		map.put("bCNum", Integer.toString(character.getCharacterNum()));
+		map.put("bHp", Double.toString(character.getCharacterHP()));
+		map.put("bAd", Double.toString(character.getCharacterAD()));
+		map.put("bAp", Double.toString(character.getCharacterAP()));
+		map.put("bAdDefence", Double.toString(character.getCharacterADDefence()));
+		map.put("bApDefence", Double.toString(character.getCharacterAPDefence()));
+		map.put("bSpeed", Double.toString(character.getCharacterSpeed()));
+		map.put("bHitRate", Double.toString(character.getCharacterHitRate()));
+		map.put("bAvoidanceRate", Double.toString(character.getCharacterAvoidanceRate()));
+		map.put("bCritical", Double.toString(character.getCharacterCritical()));
+		map.put("bAdditionalDmg", Double.toString(character.getCharacterAdditionalDmg()));
+		log.debug(map);
+		log.debug(battleUserNum);
+		return map;
+		
 	}
 	
 }
