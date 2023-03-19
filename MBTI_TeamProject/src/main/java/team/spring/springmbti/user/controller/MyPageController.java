@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.HttpServerErrorException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -118,43 +120,30 @@ public class MyPageController {
    }
 	
 	@GetMapping(value = "battleuser")
-	public Map<String, String> getUserInfo(HttpSession session, @RequestParam(value="battleUserNum", required=false) String battleUserNum) {
+	public String getUserInfo(HttpSession session, @RequestParam(value="battleUserNum",
+							required=false) String battleUserNum) throws JsonProcessingException {
 
 		User user = new User();
 		user = service.getUserInfo(battleUserNum);
 		CharacterInfo character = new CharacterInfo();
 		character = cService.getCharacter(user.getUserCharacter());
+		
 		session.setAttribute("battleUser", user);
 		session.setAttribute("battleCharacter", character);
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("bNum", user.getUserNum());
-		map.put("bNickname", user.getUserName());
-		map.put("bEmail", user.getUserEmail());
-		map.put("bProfile", user.getUserProfile());
-		map.put("bChracter", Integer.toString(user.getUserCharacter()));
-		map.put("bMbti", user.getUserMBTI());
-		map.put("bWin", Integer.toString(user.getUserWin()));
-		map.put("bDefeat", Integer.toString(user.getUserDefeat()));
-		map.put("bPoint", Integer.toString(user.getUserPoint()));
-		map.put("bItem", Integer.toString(user.getUserItem()));
-		map.put("bAcceptance", user.getUserAcceptance());
+		ObjectMapper mapper = new ObjectMapper();
+	    String competionUserInfo = mapper.writeValueAsString(user);
+		    
+		return competionUserInfo;
+	}
+	@GetMapping(value = "battlecharacter")
+	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
 		
-		map.put("bCNum", Integer.toString(character.getCharacterNum()));
-		map.put("bHp", Double.toString(character.getCharacterHP()));
-		map.put("bAd", Double.toString(character.getCharacterAD()));
-		map.put("bAp", Double.toString(character.getCharacterAP()));
-		map.put("bAdDefence", Double.toString(character.getCharacterADDefence()));
-		map.put("bApDefence", Double.toString(character.getCharacterAPDefence()));
-		map.put("bSpeed", Double.toString(character.getCharacterSpeed()));
-		map.put("bHitRate", Double.toString(character.getCharacterHitRate()));
-		map.put("bAvoidanceRate", Double.toString(character.getCharacterAvoidanceRate()));
-		map.put("bCritical", Double.toString(character.getCharacterCritical()));
-		map.put("bAdditionalDmg", Double.toString(character.getCharacterAdditionalDmg()));
-		log.debug(map);
-		log.debug(battleUserNum);
-		return map;
+		CharacterInfo character = (CharacterInfo)session.getAttribute("battleCharacter");
 		
+		ObjectMapper mapper = new ObjectMapper();
+	    String competionCharacterInfo = mapper.writeValueAsString(character);
+		return competionCharacterInfo;
 	}
 	
 }
