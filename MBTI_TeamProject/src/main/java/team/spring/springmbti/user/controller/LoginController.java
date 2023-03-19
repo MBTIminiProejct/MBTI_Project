@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.user.service.LoginService;
@@ -60,10 +63,10 @@ public class LoginController {
 	
 	
 	@GetMapping
-	public Map<String, String> test(@RequestParam(value="nickname", required=false) String nickname,
+	public  String Login(@RequestParam(value="nickname", required=false) String nickname,
 			@RequestParam(value="email", required=false) String email,
 			@RequestParam(value="profile", required=false) String profile,
-			HttpSession session) {
+			HttpSession session) throws JsonProcessingException {
 		log.debug("nickname - " + nickname);
 		log.debug("email - " + email);
 		log.debug("profile - " + profile);
@@ -78,37 +81,23 @@ public class LoginController {
 	    CharacterInfo character = new CharacterInfo();
 	    character = cService.getCharacter(userCharacterNum);
 	    
-	    Map<String, String> map = new HashMap<String, String>();
-	    map.put("num", user.getUserNum());
-		map.put("nickname", nickname);
-		map.put("email", email);
-		map.put("profile", profile);
-		map.put("chracter", Integer.toString(user.getUserCharacter()));
-		map.put("mbti", user.getUserMBTI());
-		map.put("win", Integer.toString(user.getUserWin()));
-		map.put("defeat", Integer.toString(user.getUserDefeat()));
-		map.put("point", Integer.toString(user.getUserPoint()));
-		map.put("item", Integer.toString(user.getUserItem()));
-		map.put("acceptance", user.getUserAcceptance());
-		
-		map.put("cNum", Integer.toString(character.getCharacterNum()));
-		map.put("hp", Double.toString(character.getCharacterHP()));
-		map.put("ad", Double.toString(character.getCharacterAD()));
-		map.put("ap", Double.toString(character.getCharacterAP()));
-		map.put("adDefence", Double.toString(character.getCharacterADDefence()));
-		map.put("apDefence", Double.toString(character.getCharacterAPDefence()));
-		map.put("speed", Double.toString(character.getCharacterSpeed()));
-		map.put("hitRate", Double.toString(character.getCharacterHitRate()));
-		map.put("avoidanceRate", Double.toString(character.getCharacterAvoidanceRate()));
-		map.put("critical", Double.toString(character.getCharacterCritical()));
-		map.put("additionalDmg", Double.toString(character.getCharacterAdditionalDmg()));
-		
-		
 	    session.setAttribute("myUser", user);
 	    session.setAttribute("myCharacter", character);
 	    
-		return map;
+	    ObjectMapper mapper = new ObjectMapper();
+	    String userInfo = mapper.writeValueAsString(user);
+	    
+		return userInfo;
 		
+	}
+	
+	@GetMapping(value = "character")
+	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
+		CharacterInfo character = (CharacterInfo)session.getAttribute("myCharacter");
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String characterInfo = mapper.writeValueAsString(character);
+		return characterInfo;
 	}
 	
 //	@GetMapping
