@@ -32,6 +32,7 @@ public interface UserDao {
 	User isOutCheck(String userEmail);
 
 	int reJoin(String userEmail);
-
+	
+	int checkExistUser(String battleUserNum);
 	
 }

@@ -27,6 +27,7 @@ import com.google.gson.JsonObject;
 
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
+import team.spring.springmbti.user.service.LoginService;
 import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
@@ -42,6 +43,9 @@ public class MyPageController {
    
    @Autowired
    private CharacterService cService;
+   
+   @Autowired
+   private LoginService loginservice;
    
    @ModelAttribute("myCharacter")
    public CharacterInfo createCharacter() {
@@ -119,18 +123,24 @@ public class MyPageController {
 	public String getUserInfo(HttpSession session, @RequestParam(value="battleUserNum",
 							required=false) String battleUserNum) throws JsonProcessingException {
 
-		User user = new User();
-		user = service.getUserInfo(battleUserNum);
-		CharacterInfo character = new CharacterInfo();
-		character = cService.getCharacter(user.getUserCharacter());
+		boolean checkUser = loginservice.checkExistUser(battleUserNum);
 		
-		session.setAttribute("battleUser", user);
-		session.setAttribute("battleCharacter", character);
-		
-		ObjectMapper mapper = new ObjectMapper();
-	    String competionUserInfo = mapper.writeValueAsString(user);
-		    
-		return competionUserInfo;
+		if (!checkUser) {
+			return "nonUser";
+		} else {
+			User user = new User();
+			user = service.getUserInfo(battleUserNum);
+			CharacterInfo character = new CharacterInfo();
+			character = cService.getCharacter(user.getUserCharacter());
+			
+			session.setAttribute("battleUser", user);
+			session.setAttribute("battleCharacter", character);
+			
+			ObjectMapper mapper = new ObjectMapper();
+		    String competionUserInfo = mapper.writeValueAsString(user);
+			    
+			return competionUserInfo;
+		}
 	}
 	@GetMapping(value = "battlecharacter")
 	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {

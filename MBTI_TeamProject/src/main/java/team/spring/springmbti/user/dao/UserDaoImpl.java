@@ -118,7 +118,12 @@ public class UserDaoImpl implements UserDao {
 		int count = session.update("myUser.reJoin",userEmail);
 		return count;
 	}
-
+	
+	@Override
+	public int checkExistUser(String battleUserNum) {
+		int cnt = session.selectOne("myUser.getExistUserNum", battleUserNum);
+		return cnt;
+	}
 	
 	
 	
