@@ -106,6 +106,7 @@ public class MyPageController {
       // jsonObject.addProperty("num",qone);
       // String find = gson.toJson(jsonObject);
      //  response.getWriter().write(find);
+      //
    }
     
    @DeleteMapping("deleteUser")
