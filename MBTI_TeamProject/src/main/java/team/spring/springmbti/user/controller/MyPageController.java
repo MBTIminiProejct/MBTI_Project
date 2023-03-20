@@ -1,6 +1,8 @@
 package team.spring.springmbti.user.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +18,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.client.HttpServerErrorException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -26,9 +33,9 @@ import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
-@Controller
-@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
-@RequestMapping(value = "mypage")
+@RestController
+//@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
+@RequestMapping(value = "mypage", produces="application/json")
 public class MyPageController {
    
    Logger log = LogManager.getLogger("case3");
@@ -44,11 +51,6 @@ public class MyPageController {
       CharacterInfo character = new CharacterInfo();
       return character;
    }
-   @ModelAttribute("myUser")
-   public User putUser() {
-      User user = new User();
-      return user;
-   }
    
    @ModelAttribute("battleCharacter")
    public CharacterInfo createBattleCharacter() {
@@ -62,7 +64,7 @@ public class MyPageController {
    }
    
    @GetMapping
-   public String myPage(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo character) {
+   public void myPage(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo character) {
       
       User user = (User)session.getAttribute("myUser");
       int userNum = service.getUserNum(user);
@@ -73,7 +75,6 @@ public class MyPageController {
       model.addAttribute("myUser", user);
       model.addAttribute("myCharacter", character);
       
-      return "userMyPage";
    }
    
    @DeleteMapping(value = "character")
@@ -119,16 +120,30 @@ public class MyPageController {
    }
 	
 	@GetMapping(value = "battleuser")
-	public String getUserInfo(HttpSession session, Model model, String battleUserNum, 
-			@ModelAttribute("battleCharacter") CharacterInfo character, @ModelAttribute("battleUser") User user) {
+	public String getUserInfo(HttpSession session, @RequestParam(value="battleUserNum",
+							required=false) String battleUserNum) throws JsonProcessingException {
 
+		User user = new User();
 		user = service.getUserInfo(battleUserNum);
+		CharacterInfo character = new CharacterInfo();
 		character = cService.getCharacter(user.getUserCharacter());
-		log.debug("Test " + character);
 		
-		model.addAttribute("battleUser", user);
-		model.addAttribute("battleCharacter", character);
-		return "prepBattle";
+		session.setAttribute("battleUser", user);
+		session.setAttribute("battleCharacter", character);
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String competionUserInfo = mapper.writeValueAsString(user);
+		    
+		return competionUserInfo;
+	}
+	@GetMapping(value = "battlecharacter")
+	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
+		
+		CharacterInfo character = (CharacterInfo)session.getAttribute("battleCharacter");
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String competionCharacterInfo = mapper.writeValueAsString(character);
+		return competionCharacterInfo;
 	}
 	
 }

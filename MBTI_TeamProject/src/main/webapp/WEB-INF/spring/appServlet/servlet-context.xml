@@ -18,10 +18,10 @@
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
+	</beans:bean> -->
 	
 	<!-- <context:component-scan base-package="jj.spring.springweb" /> -->
 
@@ -31,5 +31,9 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	
-	
+	<!--  
+	<mvc:cors>
+		<mvc:mapping path="/**" allowed-origins="http://localhost:8081" allowed-methods="POST,GET,PUT" allow-credentials="true"/>
+	</mvc:cors>
+	-->
 </beans:beans>

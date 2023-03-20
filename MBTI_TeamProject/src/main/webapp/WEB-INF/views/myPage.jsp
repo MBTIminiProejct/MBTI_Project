@@ -97,6 +97,8 @@
    <form action="/springmbti/mypage/user">  
     <button>회원탈퇴 (test)</button></form> 
     <!-- 탈퇴 모달 넣기 -->
-    
+    <form action="/springmbti/logout">  
+    <button>로그아웃</button></form>
+     <a href="https://kauth.kakao.com/oauth/logout?client_id=26c4c3e8460d88a695130b78307910f4&logout_redirect_uri=http://localhost:8080/springmbti/resources/main.html">로그아웃</a>
 </body>
 </html>
