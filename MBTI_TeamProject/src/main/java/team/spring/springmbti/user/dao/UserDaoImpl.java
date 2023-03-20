@@ -107,6 +107,12 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 
+	@Override
+	public int checkExistUser(String battleUserNum) {
+		int cnt = session.selectOne("myUser.getExistUserNum", battleUserNum);
+		return cnt;
+	}
+
 	
 	
 	

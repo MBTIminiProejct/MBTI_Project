@@ -29,5 +29,7 @@ public interface UserDao {
 
 	List<User> getRanking(int cnt);
 
+	int checkExistUser(String battleUserNum);
+
 	
 }
