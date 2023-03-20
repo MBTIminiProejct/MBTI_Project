@@ -107,6 +107,18 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 
+	@Override
+	public User isOutCheck(String userEmail) {
+		User user = session.selectOne("myUser.checkIsOut",userEmail);
+		return user;
+	}
+
+	@Override
+	public int reJoin(String userEmail) {
+		int count = session.update("myUser.reJoin",userEmail);
+		return count;
+	}
+
 	
 	
 	

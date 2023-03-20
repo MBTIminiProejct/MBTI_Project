@@ -1,7 +1,6 @@
 package team.spring.springmbti.user.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,16 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.client.HttpServerErrorException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -105,18 +102,17 @@ public class MyPageController {
        response.getWriter().write(find);
    }
     
-   @DeleteMapping
-   public String deleteUser(HttpSession session) {
+   @DeleteMapping("deleteUser")
+   public String deleteUser(HttpSession session,@RequestBody Map<String,String> data) {
       
-      User user = (User)session.getAttribute("myUser");
-         log.debug(user);
-      String userEmail = user.getUserEmail();
-         log.debug(userEmail);
-         log.debug("성공적으로 회원 탈퇴 완료!");
-      int count = service.deleteUser(userEmail);
+//      User user = (User)session.getAttribute("myUser");
+      log.debug(data.get("userEmail"));
+//      String userEmail = user.getUserEmail();
+         
+      int count = service.deleteUser(data.get("userEmail"));
+      log.debug("성공적으로 회원 탈퇴 완료!");
       
-      
-      return "redirect:/resources/main.html";
+      return "성공적으로 회원 탈퇴";
    }
 	
 	@GetMapping(value = "battleuser")

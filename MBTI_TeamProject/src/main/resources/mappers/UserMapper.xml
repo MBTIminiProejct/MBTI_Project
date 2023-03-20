@@ -7,7 +7,11 @@
 <mapper namespace="myUser">
 
    <select id="checkEmail" parameterType="String" resultType="User">
-      select * from users where userEmail=#{userEmail} 
+      select * from users where userEmail=#{userEmail}
+   </select>
+   
+   <select id="checkIsOut" parameterType="String" resultType="User">
+      select * from users where userEmail=#{userEmail} AND isOut='Y'
    </select>
    
    <insert id="insertUser" parameterType="User">
@@ -28,6 +32,10 @@
    
    <update id="deleteUser" parameterType="HashMap">
    	  update users set isOut='Y',outDate=#{outDate} where userEmail=#{userEmail}
+   </update>
+   
+   <update id="reJoin" parameterType="String">
+   	  update users set isOut='N',outDate=NULL where userEmail=#{userEmail}
    </update>
    
    <update id="deleteCharacter" parameterType="Integer">

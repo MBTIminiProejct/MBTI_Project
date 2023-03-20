@@ -29,5 +29,9 @@ public interface UserDao {
 
 	List<User> getRanking(int cnt);
 
+	User isOutCheck(String userEmail);
+
+	int reJoin(String userEmail);
+
 	
 }

@@ -73,9 +73,15 @@ public class LoginController {
         if(canRegister) {
         	loginservice.userRegistration(user);
         }else {
-        	log.debug("이미 생성된 아이디가 존재합니다.");
-        	boolean	isExist = loginservice.checkCharacter(user.getUserEmail());
-        	model.addAttribute("isExist",isExist);
+        	boolean isOut = loginservice.checkIsOut(user.getUserEmail());
+        	if(isOut) {
+        		loginservice.reRegistration(user.getUserEmail());
+        		log.debug("재가입");
+        	}else {
+        		log.debug("이미 생성된 아이디가 존재합니다.");
+        	}
+        	
+        	
         }
 		
 		

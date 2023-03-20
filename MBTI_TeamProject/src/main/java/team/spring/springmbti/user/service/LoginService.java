@@ -51,6 +51,20 @@ public class LoginService {
 		
 		return isExist;
 	}
+
+	public boolean checkIsOut(String userEmail) {
+		boolean isOut = true;
+		User user = dao.isOutCheck(userEmail);
+		if(user==null) {
+			isOut = false;
+		}
+		return isOut;
+	}
+
+	public void reRegistration(String userEmail) {
+		
+		int count = dao.reJoin(userEmail);
+	}
 	
 	
 	
