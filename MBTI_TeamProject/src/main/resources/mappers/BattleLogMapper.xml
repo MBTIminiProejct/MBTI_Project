@@ -7,8 +7,8 @@
 <mapper namespace="battle">
    
    <insert id="insertBattleLog" parameterType="battleLog">
-      INSERT INTO battleLog(winnerNum, loserNum, winnerName, loserName, battleField, winPoint, losePoint)
-	  VALUES(#{winnerNum}, #{loserNum}, #{winnerName}, #{loserName}, #{battleField}, #{winPoint}, #{losePoint})
+      INSERT INTO battleLog(winnerNum, loserNum, winnerName, loserName, battleField, winPoint, losePoint, bLog)
+	  VALUES(#{winnerNum}, #{loserNum}, #{winnerName}, #{loserName}, #{battleField}, #{winPoint}, #{losePoint}, #{bLog})
    </insert>
 
 
