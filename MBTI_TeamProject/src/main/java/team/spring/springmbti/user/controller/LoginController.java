@@ -2,27 +2,17 @@ package team.spring.springmbti.user.controller;
 
 
 
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -66,7 +56,7 @@ public class LoginController {
 	public  String Login(@RequestParam(value="nickname", required=false) String nickname,
 			@RequestParam(value="email", required=false) String email,
 			@RequestParam(value="profile", required=false) String profile,
-			HttpSession session) throws JsonProcessingException {
+			HttpSession session, Model model) throws JsonProcessingException {
 		log.debug("nickname - " + nickname);
 		log.debug("email - " + email);
 		log.debug("profile - " + profile);
@@ -75,6 +65,20 @@ public class LoginController {
 		user.setUserEmail(email);
 		user.setUserName(nickname);
 		user.setUserProfile(profile);
+		
+		boolean canRegister = loginservice.checkEmail(user.getUserEmail());
+        
+        model.addAttribute("canRegister",canRegister);
+        
+        if(canRegister) {
+        	loginservice.userRegistration(user);
+        }else {
+        	log.debug("이미 생성된 아이디가 존재합니다.");
+        	boolean	isExist = loginservice.checkCharacter(user.getUserEmail());
+        	model.addAttribute("isExist",isExist);
+        }
+		
+		
         int userNum = service.getUserNum(user);
         user = service.getUserInfo(Integer.toString(userNum));
 	    int userCharacterNum = service.getUserCharacterNum(userNum);
@@ -162,6 +166,6 @@ public class LoginController {
 //        
 //        return "myPage";
 //    }
-//	
-//	
+	
+	
 }
