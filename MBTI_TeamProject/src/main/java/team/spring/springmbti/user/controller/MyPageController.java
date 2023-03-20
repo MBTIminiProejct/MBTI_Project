@@ -82,28 +82,30 @@ public class MyPageController {
    public void deleteCharacter(HttpSession session,
          @ModelAttribute("myUser") User user, 
          HttpServletResponse response,
-         HttpServletRequest request)throws ServletException, IOException {
+         HttpServletRequest request, @RequestParam(value="userCharacterNum",
+			required=false) String userCharacterNum)throws ServletException, IOException {
       
       log.debug("@DeleteMapping 호출");
-      log.debug("num : " + request.getParameter("num"));
+      log.debug(userCharacterNum);
       
-      request.setCharacterEncoding("UTF-8");
-       int qone = Integer.parseInt(request.getParameter("num"));
+   //   request.setCharacterEncoding("UTF-8");
+   //    int qone = Integer.parseInt(request.getParameter("num"));
       
-      user = (User)session.getAttribute("myUser");
-      log.debug("여기로 오면 좋겠어");
-      int userNum = service.getUserNum(user);
-      int userCharacterNum = service.getUserCharacterNum(userNum);
+   //   user = (User)session.getAttribute("myUser");
+    //  log.debug("여기로 오면 좋겠어");
+  //    int userNum = service.getUserNum(user);
+   //   int userCharacterNum = service.getUserCharacterNum(userNum);
+      log.debug("test");
       log.debug(userCharacterNum);      
-      int count = service.deleteCharacter(userCharacterNum);
+      int count = service.deleteCharacter(Integer.valueOf(userCharacterNum));
       if(count==1) {
          log.debug("성공적으로 캐릭터 삭제 완료!");
       }
-      Gson gson = new Gson();
-       JsonObject jsonObject = new JsonObject();
-       jsonObject.addProperty("num",qone);
-       String find = gson.toJson(jsonObject);
-       response.getWriter().write(find);
+     // Gson gson = new Gson();
+     //  JsonObject jsonObject = new JsonObject();
+      // jsonObject.addProperty("num",qone);
+      // String find = gson.toJson(jsonObject);
+     //  response.getWriter().write(find);
    }
     
    @DeleteMapping("deleteUser")
