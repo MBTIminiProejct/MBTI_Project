@@ -107,6 +107,23 @@ public class UserDaoImpl implements UserDao {
 		return list;
 	}
 
+	@Override
+	public User isOutCheck(String userEmail) {
+		User user = session.selectOne("myUser.checkIsOut",userEmail);
+		return user;
+	}
+
+	@Override
+	public int reJoin(String userEmail) {
+		int count = session.update("myUser.reJoin",userEmail);
+		return count;
+	}
+	
+	@Override
+	public int checkExistUser(String battleUserNum) {
+		int cnt = session.selectOne("myUser.getExistUserNum", battleUserNum);
+		return cnt;
+	}
 	
 	
 	

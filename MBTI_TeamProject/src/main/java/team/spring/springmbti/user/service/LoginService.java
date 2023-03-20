@@ -45,11 +45,38 @@ public class LoginService {
 		
 		int characterNum = dao.characterCheck(userEmail);
 		
-		if(characterNum>1) {
+		if(characterNum > 1) {
 			isExist=true;
 		}
 		
 		return isExist;
+	}
+
+	public boolean checkExistUser(String battleUserNum) {
+		
+		boolean isExist = false;
+		
+		int cnt = dao.checkExistUser(battleUserNum);
+		
+		if(cnt >= 1) {
+			isExist=true;
+		}
+		
+		return isExist;
+	}
+
+	public boolean checkIsOut(String userEmail) {
+		boolean isOut = true;
+		User user = dao.isOutCheck(userEmail);
+		if(user==null) {
+			isOut = false;
+		}
+		return isOut;
+	}
+
+	public void reRegistration(String userEmail) {
+		
+		int count = dao.reJoin(userEmail);
 	}
 	
 	

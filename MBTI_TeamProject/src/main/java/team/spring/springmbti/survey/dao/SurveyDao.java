@@ -11,4 +11,6 @@ public interface SurveyDao {
 	int updateSurveyThree(User user);
 	
 	int updateSurveyFour(User user);
+	
+	int updateUserCharacter(User user);
 }

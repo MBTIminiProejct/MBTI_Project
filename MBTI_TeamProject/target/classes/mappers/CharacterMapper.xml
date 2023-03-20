@@ -14,9 +14,29 @@
    </insert>
 
 	<select id="getCharacterByCharacterNum" parameterType="Integer" resultType="CharacterInfo">
-      select characterHP, characterAD, characterAP, characterADDefence, characterAPDefence,
+      select characterNum, characterHP, characterAD, characterAP, characterADDefence, characterAPDefence,
       		 characterSpeed, characterHitRate, characterAvoidanceRate, characterCritical, characterAdditionalDmg 
       from characterInfo where characterNum=#{userCharacterNum}
    </select>
+   
+   <select id="searchMax" resultType="int">
+   	  SELECT MAX(characterNum) FROM characterInfo;
+   </select>
+   
+   <select id="searchCharacter" parameterType="CharacterInfo" resultType="CharacterInfo">
+    select characterHP, characterAD, characterAP, characterADDefence, characterAPDefence, characterSpeed, characterHitRate, characterAvoidanceRate, characterCritical, characterAdditionalDmg
+    from characterInfo 
+    where characterNum = #{characterNum}  		 
+   </select>
+   
+   <update id="updatecharacter"	parameterType="CharacterInfo">
+    <![CDATA[
+    UPDATE characterInfo 
+    SET characterAD = #{characterAD}, characterAP = #{characterAP}, characterADDefence = #{characterADDefence}, 
+    characterAPDefence = #{characterAPDefence}, characterHitRate = #{characterHitRate}, characterAvoidanceRate = #{characterAvoidanceRate}, 
+    characterCritical = #{characterCritical}, characterAdditionalDmg = #{characterAdditionalDmg}    
+    WHERE characterNum = #{characterNum}
+    ]]>
+   </update>
 
 </mapper>

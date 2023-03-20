@@ -7,7 +7,11 @@
 <mapper namespace="myUser">
 
    <select id="checkEmail" parameterType="String" resultType="User">
-      select * from users where userEmail=#{userEmail} 
+      select * from users where userEmail=#{userEmail}
+   </select>
+   
+   <select id="checkIsOut" parameterType="String" resultType="User">
+      select * from users where userEmail=#{userEmail} AND isOut='Y'
    </select>
    
    <insert id="insertUser" parameterType="User">
@@ -30,6 +34,10 @@
    	  update users set isOut='Y',outDate=#{outDate} where userEmail=#{userEmail}
    </update>
    
+   <update id="reJoin" parameterType="String">
+   	  update users set isOut='N',outDate=NULL where userEmail=#{userEmail}
+   </update>
+   
    <update id="deleteCharacter" parameterType="Integer">
    	  update users set userMBTI=NULL,userCharacter=1,
    	  userI=0,userE=0,userS=0,userN=0,userT=0,userF=0,userP=0,userJ=0
@@ -39,6 +47,12 @@
    <select id="getUserInfoByUserNum" parameterType="String" resultType="User">
       select * from users where userNum=#{battleUserNum} 
    </select>
+
+	<update id="updateUserCharacter" parameterType="User">
+   	  update users 
+   	  set userCharacter = #{userCharacter}
+   	  where userEmail=#{userEmail}
+   </update>
 
  	<update id="updateWinnerPoint" parameterType="battleLog">
    	  update users set userWin = userWin + 1, userPoint = userPoint + #{winPoint}
@@ -57,6 +71,10 @@
       	 	ROW_NUMBER() OVER (ORDER BY userPoint DESC) as ranking FROM users) a
 	  where a.ranking <= #{count}
 	]]>
+   </select>
+   
+   <select id="getExistUserNum" parameterType="String" resultType="Integer">
+      select count(userNum) from users where userNum=#{battleUserNum}
    </select>
 <!-- 회원탈퇴를 하면 isout이 n인지 data를 hashmap으로 받아오는 걸 -->
 

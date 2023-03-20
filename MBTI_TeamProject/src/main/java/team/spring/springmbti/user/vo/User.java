@@ -46,6 +46,12 @@ public class User {
 		this.userAcceptance = userAcceptance;
 	}
 	
+	public String getUserAcceptance() {
+		if (this.userAcceptance == true) {
+			return "허용";
+		} else
+			return "대결 불가능";
+	}
 	
 }
 
