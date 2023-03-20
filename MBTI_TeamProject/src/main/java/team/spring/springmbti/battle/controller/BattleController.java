@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import team.spring.springmbti.battle.service.BattleService;
 import team.spring.springmbti.battle.vo.BattleLog;
 import team.spring.springmbti.character.vo.CharacterInfo;
@@ -59,11 +62,14 @@ public class BattleController {
 	
 	@GetMapping
 	public String battle(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo myCharacter, @ModelAttribute("myUser") User myUser,
-			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser, String battleField) {
+			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser, String battleField) throws JsonProcessingException {
 		
 		log.debug("들어온건가");
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
-		return "battleEnd";
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String battleLogInfo = mapper.writeValueAsString(battleLog);
+		return battleLogInfo;
 	}
 	
 	@GetMapping(value = "searchBattleUser")
