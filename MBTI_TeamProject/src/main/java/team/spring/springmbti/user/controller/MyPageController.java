@@ -1,6 +1,10 @@
 package team.spring.springmbti.user.controller;
 
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -15,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -153,6 +158,19 @@ public class MyPageController {
 		ObjectMapper mapper = new ObjectMapper();
 	    String competionCharacterInfo = mapper.writeValueAsString(character);
 		return competionCharacterInfo;
+		
 	}
+	
+//	@GetMapping(value = "mbti")
+//	public void setUserMbti(HttpSession session, @RequestParam(value="userMbti",
+//			required=false) String userMbti) {
+//		
+//		log.debug("test" + userMbti);
+//		User user = (User)session.getAttribute("myUser");
+//		user.setUserMBTI(userMbti);
+//		session.setAttribute("myUser", user);
+//		
+//	}
+	
 	
 }
