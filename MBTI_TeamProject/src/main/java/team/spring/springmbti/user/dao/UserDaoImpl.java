@@ -106,6 +106,12 @@ public class UserDaoImpl implements UserDao {
 		List<User> list = session.selectList("myUser.getRanking", cnt);
 		return list;
 	}
+	
+	@Override
+	public User getRankingOne(int cnt) {
+		User user = session.selectOne("myUser.getRankingOne", cnt);
+		return user;
+	}
 
 	@Override
 	public User isOutCheck(String userEmail) {
@@ -123,6 +129,12 @@ public class UserDaoImpl implements UserDao {
 	public int checkExistUser(String battleUserNum) {
 		int cnt = session.selectOne("myUser.getExistUserNum", battleUserNum);
 		return cnt;
+	}
+
+	@Override
+	public User getUserPage(String userNum) {
+		User userpage = session.selectOne("myUser.checkUserPage", userNum);
+		return userpage;
 	}
 	
 	

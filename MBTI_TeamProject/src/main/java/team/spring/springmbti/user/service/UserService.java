@@ -59,5 +59,17 @@ public class UserService {
 		}
 		return list;
 	}
+	
+public User getRankingOne(int cnt) {
+		
+		User user = dao.getRankingOne(cnt);
+		
+		return user;
+	}
+	
+	public User getUserPage(String count) {
+		User user = dao.getUserPage(count);
+		return user;
+	}
 
 }

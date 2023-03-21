@@ -73,8 +73,21 @@
 	]]>
    </select>
    
+   <select id="getRankingOne" parameterType="Integer" resultType="User">
+   <![CDATA[
+      select *
+	  from (SELECT userNum, userName, userMBTI, userWin, userDefeat, userPoint, userAcceptance,
+      	 	ROW_NUMBER() OVER (ORDER BY userPoint DESC) as ranking FROM users) a
+	  where a.ranking = #{count}
+	]]>
+   </select>
+   
    <select id="getExistUserNum" parameterType="String" resultType="Integer">
       select count(userNum) from users where userNum=#{battleUserNum}
+   </select>
+   
+   <select id="checkUserPage" parameterType="String" resultType="User">
+      select * from users where userNum=#{userNum}
    </select>
 <!-- 회원탈퇴를 하면 isout이 n인지 data를 hashmap으로 받아오는 걸 -->
 

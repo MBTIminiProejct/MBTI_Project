@@ -28,11 +28,15 @@ public interface UserDao {
 	int updateLoserPoint(BattleLog battleLog);
 
 	List<User> getRanking(int cnt);
+	
+	User getRankingOne(int cnt);
 
 	User isOutCheck(String userEmail);
 
 	int reJoin(String userEmail);
 	
 	int checkExistUser(String battleUserNum);
+
+	User getUserPage(String count);
 	
 }
