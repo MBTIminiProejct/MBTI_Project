@@ -65,7 +65,8 @@ public class MyPageController {
    }
    
    @GetMapping
-   public void myPage(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo character) {
+   public void myPage(HttpSession session, Model model, 
+		   @ModelAttribute("myCharacter") CharacterInfo character) {
       
       User user = (User)session.getAttribute("myUser");
       int userNum = service.getUserNum(user);

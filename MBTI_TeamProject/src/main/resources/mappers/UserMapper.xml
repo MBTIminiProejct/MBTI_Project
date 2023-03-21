@@ -76,6 +76,11 @@
    <select id="getExistUserNum" parameterType="String" resultType="Integer">
       select count(userNum) from users where userNum=#{battleUserNum}
    </select>
+   
+<!--    <select id="checkEmail" parameterType="String" resultType="User">
+      select * from users where userEmail=#{userEmail}
+   </select> -->
+   
 <!-- 회원탈퇴를 하면 isout이 n인지 data를 hashmap으로 받아오는 걸 -->
 
    <!-- resultMap의 일반적인 사용법  property에 vo의 field명, column에 db의 column명이 다를 때 사용한다. 둘을 맞춰주는 역할-->

@@ -59,5 +59,11 @@ public class UserService {
 		}
 		return list;
 	}
+	
+//	public User readUserPage(String userEmail) {
+//		User user = dao.readUserPage(userEmail);
+//		
+//		return user;
+//	}
 
 }

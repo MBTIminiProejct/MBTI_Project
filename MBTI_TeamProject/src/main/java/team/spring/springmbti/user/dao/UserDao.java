@@ -35,4 +35,5 @@ public interface UserDao {
 	
 	int checkExistUser(String battleUserNum);
 	
+	//User readUserPage(String userEmail);
 }

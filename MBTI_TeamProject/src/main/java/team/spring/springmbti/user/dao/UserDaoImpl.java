@@ -125,6 +125,9 @@ public class UserDaoImpl implements UserDao {
 		return cnt;
 	}
 	
-	
+//	public User readUserPage(String userEmail) {
+//		User user = session.selectOne("myUser.getUserInfoByUserNum", userEmail);
+//		return user;
+//	}
 	
 }
