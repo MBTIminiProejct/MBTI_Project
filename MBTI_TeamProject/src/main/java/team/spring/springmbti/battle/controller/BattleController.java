@@ -90,6 +90,7 @@ public class BattleController {
 		for(User user : list) {
 			JSONObject obj=new JSONObject();
 			obj.put("userName",user.getUserName());
+			obj.put("userNum",user.getUserNum());
 			obj.put("userMBTI",user.getUserMBTI());
 			obj.put("userWin",user.getUserWin());
 			obj.put("userPoint",user.getUserPoint());
