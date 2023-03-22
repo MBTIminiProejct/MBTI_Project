@@ -12,24 +12,21 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
+import team.spring.springmbti.mbti.service.MBTIService;
+import team.spring.springmbti.mbti.vo.MBTIResult;
 import team.spring.springmbti.survey.service.SurveyService;
 import team.spring.springmbti.user.vo.User;
 
@@ -47,6 +44,9 @@ public class SurveyController {
    
    @Autowired
    private CharacterService characterservice;
+   
+   @Autowired
+   private MBTIService mbtiservice;
    
    Logger log = LogManager.getLogger("case3");
    
@@ -447,13 +447,20 @@ public class SurveyController {
    }
    
    @GetMapping(value = "/partfour/sbuttonfour/user")
-   public String getMbti(HttpSession session) throws JsonProcessingException {
-      User user = (User)session.getAttribute("myUser");
-      ObjectMapper mapper = new ObjectMapper();
+   public Map<String, String> getMbti(HttpSession session) throws JsonProcessingException {
+	   
+       User user = (User)session.getAttribute("myUser");
+       MBTIResult mbti = mbtiservice.getMBTI(user.getUserMBTI());
+       ObjectMapper mapper = new ObjectMapper();
        String userInfo = mapper.writeValueAsString(user);
+       String mbtiInfo = mapper.writeValueAsString(mbti);
+       Map<String,String> map = new HashMap<String, String>();
+       map.put("mbtiInfo", mbtiInfo);
+       map.put("userInfo", userInfo);       
+       
        log.debug(userInfo);
        log.debug("제발");
-      return userInfo;
+      return map;
    }
    
 //   @GetMapping("/partfour/sbuttonfour")

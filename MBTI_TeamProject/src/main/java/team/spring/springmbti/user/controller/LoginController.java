@@ -2,6 +2,9 @@ package team.spring.springmbti.user.controller;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
+import team.spring.springmbti.mbti.service.MBTIService;
+import team.spring.springmbti.mbti.vo.MBTIResult;
 import team.spring.springmbti.user.service.LoginService;
 import team.spring.springmbti.user.service.OAuthService;
 import team.spring.springmbti.user.service.UserService;
@@ -43,6 +48,9 @@ public class LoginController {
 	@Autowired
 	private CharacterService cService;
 	
+	@Autowired
+	private MBTIService mbtiservice;
+	
 	@ModelAttribute("myCharacter")
 	   public CharacterInfo createCharacter() {
 	      CharacterInfo character = new CharacterInfo();
@@ -53,7 +61,7 @@ public class LoginController {
 	
 	
 	@GetMapping
-	public  String Login(@RequestParam(value="nickname", required=false) String nickname,
+	public  Map<String,String> Login(@RequestParam(value="nickname", required=false) String nickname,
 			@RequestParam(value="email", required=false) String email,
 			@RequestParam(value="profile", required=false) String profile,
 			HttpSession session, Model model) throws JsonProcessingException {
@@ -80,11 +88,7 @@ public class LoginController {
         	}else {
         		log.debug("이미 생성된 아이디가 존재합니다.");
         	}
-        	
-        	
         }
-		
-		
         int userNum = service.getUserNum(user);
         user = service.getUserInfo(Integer.toString(userNum));
 	    int userCharacterNum = service.getUserCharacterNum(userNum);
@@ -94,19 +98,30 @@ public class LoginController {
 	    session.setAttribute("myUser", user);
 	    session.setAttribute("myCharacter", character);
 	    
+	    MBTIResult mbtiresult = new MBTIResult();
+	    mbtiresult = mbtiservice.getMBTI(user.getUserMBTI());
+	    
 	    ObjectMapper mapper = new ObjectMapper();
 	    String userInfo = mapper.writeValueAsString(user);
+	    String characterInfo = mapper.writeValueAsString(character);
+	    String mbtiresultInfo = mapper.writeValueAsString(mbtiresult);
+	    Map<String,String> map = new HashMap<String, String>();
+	    map.put("userInfo",userInfo);
+	    map.put("characterInfo",characterInfo);
+	    map.put("mbtiresultInfo",mbtiresultInfo);
 	    
-		return userInfo;
+	    
+		return map;
 		
 	}
 	
 	@GetMapping(value = "character")
 	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
 		CharacterInfo character = (CharacterInfo)session.getAttribute("myCharacter");
-		
+		System.out.println("캐릭터 세션" + character);
 		ObjectMapper mapper = new ObjectMapper();
 	    String characterInfo = mapper.writeValueAsString(character);
+	    System.out.println("캐릭터 정보!!!!!!!!!!!!!!!" + characterInfo);
 		return characterInfo;
 	}
 	

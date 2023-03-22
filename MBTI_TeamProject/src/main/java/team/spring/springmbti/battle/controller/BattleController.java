@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +26,7 @@ import team.spring.springmbti.user.vo.User;
 
 @RestController
 @RequestMapping(value = "battle",produces = "application/json")
-@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
+//@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
 public class BattleController {
 
 	Logger log = LogManager.getLogger("case3");
@@ -66,7 +65,10 @@ public class BattleController {
 		
 		log.debug("들어온건가");
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
-		
+		session.setAttribute("myCharacter", myCharacter);
+		session.setAttribute("myUser", myUser);
+		session.setAttribute("battleCharacter", battleCharacter);
+		session.setAttribute("battleUser", battleUser);
 		ObjectMapper mapper = new ObjectMapper();
 	    String battleLogInfo = mapper.writeValueAsString(battleLog);
 		return battleLogInfo;
