@@ -31,6 +31,7 @@ import com.google.gson.JsonObject;
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.survey.service.SurveyService;
+import team.spring.springmbti.survey.vo.SurveyBack;
 import team.spring.springmbti.user.vo.User;
 
 
@@ -256,11 +257,12 @@ public class SurveyController {
    public Map<String, Integer> handler001(@RequestParam(value="qone", required=false) int qone, @RequestParam(value="qtwo", required=false) int qtwo, 
          @RequestParam(value="qthree", required=false) int qthree, @RequestParam(value="qfour", required=false) int qfour,
          @RequestParam(value="qfive", required=false) int qfive,
-         Model model, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         Model model, User user, SurveyBack surveyback, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       log.debug("handler001() 성공");
       request.setCharacterEncoding("UTF-8");
       log.debug(qone);
       int qtotal = qone + qtwo + qthree + qfour + qfive;
+      log.debug(qtotal);
       int total = qtotal - 15;
       int nqtotal = total*-1;
       
@@ -273,6 +275,14 @@ public class SurveyController {
       user.setUserI(nqtotal);
       user.setUserE(qtotal);
       
+//      surveyback.setEiOne(qone);
+//      surveyback.setEiTwo(qtwo);
+//      surveyback.setEiThree(qthree);
+//      surveyback.setEiFour(qfour);
+//      surveyback.setEiFive(qfive);
+//      surveyback.setBarE(bare);
+//      surveyback.setBarI(bari);
+    //  session.setAttribute("myBack", surveyback);
       
       //session.setAttribute("myUser", user);
       //model.addAttribute("myUser", user);

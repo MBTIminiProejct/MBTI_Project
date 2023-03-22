@@ -25,9 +25,9 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveyone",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("����!");
+			log.debug("성공!");
 		} else {
-			log.debug("����!");
+			log.debug("실패!");
 		}
 		//session.close();
 		return result;
@@ -38,7 +38,7 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveytwo",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("����!");
+			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
@@ -51,7 +51,7 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveythree",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("����!");
+			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
@@ -64,7 +64,7 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("mySurvey.updatesurveyfour",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("����!");
+			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
@@ -77,7 +77,7 @@ public class SurveyDaoImpl implements SurveyDao {
 		int result = session.update("myUser.updateUserCharacter",user);
 		if(result==1) {
 			//session.commit();
-			log.debug("����!");
+			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
