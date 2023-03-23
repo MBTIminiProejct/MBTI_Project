@@ -347,16 +347,14 @@ public class SurveyController {
    @GetMapping(value = "/partfour/sbuttonfour/user")
    public Map<String, String> getMbti(HttpSession session,@RequestParam(value="mbti", required=false) String mbti) throws JsonProcessingException {
 	   
-       User user = (User)session.getAttribute("myUser");
+       
        MBTIResult mbtiresult = mbtiservice.getMBTI(mbti);
        ObjectMapper mapper = new ObjectMapper();
-       String userInfo = mapper.writeValueAsString(user);
+       
        String mbtiInfo = mapper.writeValueAsString(mbtiresult);
        Map<String,String> map = new HashMap<String, String>();
        map.put("mbtiInfo", mbtiInfo);
-//       map.put("userInfo", userInfo);       
        
-       log.debug(userInfo);
        log.debug("제발");
       return map;
    }
