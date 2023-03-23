@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -52,22 +53,22 @@ public class MyPageController {
    @Autowired
    private LoginService loginservice;
    
-   @ModelAttribute("myCharacter")
-   public CharacterInfo createCharacter() {
-      CharacterInfo character = new CharacterInfo();
-      return character;
-   }
-   
-   @ModelAttribute("battleCharacter")
-   public CharacterInfo createBattleCharacter() {
-      CharacterInfo character = new CharacterInfo();
-      return character;
-   }
-   @ModelAttribute("battleUser")
-   public User putBattleUser() {
-      User user = new User();
-      return user;
-   }
+//   @ModelAttribute("myCharacter")
+//   public CharacterInfo createCharacter() {
+//      CharacterInfo character = new CharacterInfo();
+//      return character;
+//   }
+//   
+//   @ModelAttribute("battleCharacter")
+//   public CharacterInfo createBattleCharacter() {
+//      CharacterInfo character = new CharacterInfo();
+//      return character;
+//   }
+//   @ModelAttribute("battleUser")
+//   public User putBattleUser() {
+//      User user = new User();
+//      return user;
+//   }
    
    @GetMapping
    public void myPage(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo character) {
@@ -128,33 +129,41 @@ public class MyPageController {
    }
 	
 	@GetMapping(value = "battleuser")
-	public String getUserInfo(HttpSession session, @RequestParam(value="battleUserNum",
+	public Map<String, String> getUserInfo(HttpSession session, @RequestParam(value="battleUserNum",
 							required=false) String battleUserNum) throws JsonProcessingException {
 
-		boolean checkUser = loginservice.checkExistUser(battleUserNum);
+		Logger log = LogManager.getLogger("case3");
 		
+		boolean checkUser = loginservice.checkExistUser(battleUserNum);
+		Map<String, String> map = new HashMap<String, String>();
 		if (!checkUser) {
-			return "nonUser";
+			map.put("nonUser", "nonUser");
+			return map;
 		} else {
 			User user = new User();
 			user = service.getUserInfo(battleUserNum);
 			CharacterInfo character = new CharacterInfo();
 			character = cService.getCharacter(user.getUserCharacter());
-			
 			session.setAttribute("battleUser", user);
 			session.setAttribute("battleCharacter", character);
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String competionUserInfo = mapper.writeValueAsString(user);
+		    String competionCharacterInfo = mapper.writeValueAsString(character);
+		    map.put("competionUserInfo", competionUserInfo);
+		    map.put("competionCharacterInfo", competionCharacterInfo);
 			    
-			return competionUserInfo;
+			return map;
 		}
 	}
 	@GetMapping(value = "battlecharacter")
 	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
 		
-		CharacterInfo character = (CharacterInfo)session.getAttribute("battleCharacter");
+		Logger log = LogManager.getLogger("case3");
 		
+		CharacterInfo character = (CharacterInfo)session.getAttribute("battleCharacter");
+	
+		log.debug("적 캐릭터" + character);
 		ObjectMapper mapper = new ObjectMapper();
 	    String competionCharacterInfo = mapper.writeValueAsString(character);
 		return competionCharacterInfo;

@@ -141,7 +141,6 @@ public class BattleService {
 		Logger log = LogManager.getLogger("case3");
 		
 		BattleLog battleLog = new BattleLog();
-		
 		String[] mbtiC = challengeUser.getUserMBTI().split("");
 		String[] mbtiD = defenceUser.getUserMBTI().split("");
 		StringBuilder bLog = new StringBuilder();
