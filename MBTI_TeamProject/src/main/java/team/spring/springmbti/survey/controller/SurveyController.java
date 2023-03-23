@@ -28,6 +28,7 @@ import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.mbti.service.MBTIService;
 import team.spring.springmbti.mbti.vo.MBTIResult;
 import team.spring.springmbti.survey.service.SurveyService;
+import team.spring.springmbti.survey.vo.SurveyBack;
 import team.spring.springmbti.user.vo.User;
 
 
@@ -35,7 +36,6 @@ import team.spring.springmbti.user.vo.User;
  * Handles requests for the application home page.
  */
 @RestController
-//@SessionAttributes(value= {"myUser","myCharacter"})
 @RequestMapping(value = "survey",produces="application/json")
 public class SurveyController {
    
@@ -50,110 +50,34 @@ public class SurveyController {
    
    Logger log = LogManager.getLogger("case3");
    
-//   @ModelAttribute("myUser")
-//   public User createUser() {
-//      User user = new User();
-//      return user;
-//   }
-//   
-//   @ModelAttribute("myCharacter")
-//   public CharacterInfo createCharacter() {
-//      CharacterInfo characterinfo = new CharacterInfo();
-//      return characterinfo;
-//   }
+
    
-   @PostMapping("surveyone")
-   public String handler(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   @GetMapping("/fast")
+   public Map<String, Integer> beforefast(@RequestParam(value="fast", required=false) int fast, HttpSession session) {
+      log.debug("fast 성공");
+      log.debug(fast);
+      session.setAttribute("before", fast);
+      Map<String, Integer> map = new HashMap<String, Integer>();
+      map.put("fast", fast);
       
-      
-      
-      User userbefore = (User)session.getAttribute("myUser");
-      CharacterInfo character = 
-            new CharacterInfo(100, 10, 10, 5 , 5 , 10, 10 , 10 , 30  ,0 );
-      int result = characterservice.createCharacter(character);
-      log.debug("잘되고있는거니");
-      
-      int maxresult = characterservice.maxCharacter();
-      
-      user.setUserCharacter(maxresult); 
-      model.addAttribute("myUser", user);
-      
-      return "survey/survey1";
+      return map;
    }
    
-   @PostMapping("surveytwo")
-   public String handler1() {
-      log.debug("handler1() 성공");
+   @GetMapping("/slow")
+   public Map<String, Integer> beforeslow(@RequestParam(value="slow", required=false) int slow, HttpSession session) {
+      log.debug("slow 성공");
+      log.debug(slow);
+      session.setAttribute("before", slow);
+      Map<String, Integer> map = new HashMap<String, Integer>();
+      map.put("slow", slow);
       
-      
-      return "survey/survey2";
+      return map;
    }
-   
-   @PostMapping("surveythree")
-   public String handler2() {
-      log.debug("handler2() 성공");
-      
-      
-      return "survey/survey3";
-   }
-   
-   @PostMapping("surveyfour")
-   public String handler3() {
-      log.debug("handler3() 성공");
-      
-      
-      return "survey/survey4";
-   }
-   
-   @PostMapping("surveyfive")
-   public String handler4() {
-      log.debug("handler4() 성공");
-      
-      
-      return "survey/survey5";
-   }
-   
-   @RequestMapping("/surveyresult")
-      public String popup1(Model model,@ModelAttribute("myUser") User user, @ModelAttribute("myCharacter") CharacterInfo characterinfo, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-         
-        User usercurrent = (User)session.getAttribute("myUser");
-        int characternum = usercurrent.getUserCharacter();
-        log.debug(characternum);
-        //CharacterInfo characterinfo = new CharacterInfo();
-        //characterinfo.setCharacterNum(characternum);   
-        //log.debug(characterinfo);
-        characterinfo = characterservice.getCharacter(characternum);
-        log.debug(characterinfo);
-        model.addAttribute("myCharacter",characterinfo);
-        
-        log.debug("결과 출력 성공!");
-         
-         return "resultPage";
-      }
-   
-//   @GetMapping("surveyone1")
-//   public void handler01(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler01() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      int qnum = Integer.parseInt(request.getParameter("qnum"));
-//      int onum = Integer.parseInt(request.getParameter("onum"));
-//
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qnum", qnum);
-//      jsonObject.addProperty("onum", onum);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }   
    
    @GetMapping("/partone/surveyone")
    public Map<String, String> handler01(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler01() 성공");
-      //request.setCharacterEncoding("UTF-8");
-      //int qnum = Integer.parseInt(request.getParameter("qnum"));
-      //int onum = Integer.parseInt(request.getParameter("onum"));
       log.debug(cnum);
       log.debug(onum);
       Map<String, String> map = new HashMap<String, String>();
@@ -207,60 +131,18 @@ public class SurveyController {
       return map;
    }
    
-//   @GetMapping("surveytwo2")
-//   public void handler02(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler02() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      int qnum = Integer.parseInt(request.getParameter("qnum"));
-//      int onum = Integer.parseInt(request.getParameter("onum"));
-//
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qnum", qnum);
-//      jsonObject.addProperty("onum", onum);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }   
-//   
-//   @GetMapping("surveythree3")
-//   public void handler03(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler03() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      int qnum = Integer.parseInt(request.getParameter("qnum"));
-//      int onum = Integer.parseInt(request.getParameter("onum"));
-//
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qnum", qnum);
-//      jsonObject.addProperty("onum", onum);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }   
-//   
-//   @GetMapping("surveyfour4")
-//   public void handler04(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler04() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      int qnum = Integer.parseInt(request.getParameter("qnum"));
-//      int onum = Integer.parseInt(request.getParameter("onum"));
-//
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qnum", qnum);
-//      jsonObject.addProperty("onum", onum);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }   
+
    
    @GetMapping("/partone/sbuttonone")
    public Map<String, Integer> handler001(@RequestParam(value="qone", required=false) int qone, @RequestParam(value="qtwo", required=false) int qtwo, 
          @RequestParam(value="qthree", required=false) int qthree, @RequestParam(value="qfour", required=false) int qfour,
          @RequestParam(value="qfive", required=false) int qfive,
-         Model model, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         Model model, User user, SurveyBack surveyback, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       log.debug("handler001() 성공");
       request.setCharacterEncoding("UTF-8");
       log.debug(qone);
       int qtotal = qone + qtwo + qthree + qfour + qfive;
+      log.debug(qtotal);
       int total = qtotal - 15;
       int nqtotal = total*-1;
       
@@ -273,6 +155,14 @@ public class SurveyController {
       user.setUserI(nqtotal);
       user.setUserE(qtotal);
       
+//      surveyback.setEiOne(qone);
+//      surveyback.setEiTwo(qtwo);
+//      surveyback.setEiThree(qthree);
+//      surveyback.setEiFour(qfour);
+//      surveyback.setEiFive(qfive);
+//      surveyback.setBarE(bare);
+//      surveyback.setBarI(bari);
+    //  session.setAttribute("myBack", surveyback);
       
       //session.setAttribute("myUser", user);
       //model.addAttribute("myUser", user);
@@ -411,9 +301,19 @@ public class SurveyController {
       surveyservice.updateScoreFour(user);
       
       User userbefore = (User)session.getAttribute("myUser");
+      int before = (Integer) session.getAttribute("before");
+      if (before == 2) {
       CharacterInfo character = 
-            new CharacterInfo(100, 10, 10, 5 , 5 , 10, 10 , 10 , 30  ,0 );
+            new CharacterInfo(100, 10, 10, 5 , 5 , 11, 10 , 10 , 30  ,0 );
+      
       int result = characterservice.createCharacter(character);
+      } else {
+    	  CharacterInfo character = 
+    	            new CharacterInfo(100, 10, 10, 5 , 5 , 9, 10 , 10 , 30  ,0 );  
+    	  
+    	  int result = characterservice.createCharacter(character);
+      }
+      
       log.debug("잘되고있는거니");
       
       int maxresult = characterservice.maxCharacter();

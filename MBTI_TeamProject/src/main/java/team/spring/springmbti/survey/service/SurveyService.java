@@ -23,45 +23,45 @@ public class SurveyService {
 	public void updateScoreOne(User user) {
 		int result = dao.updateSurveyOne(user);
 		if(result == 1) {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 성공");
 		} else {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 실패");
 		}
 	}
 	
 	public void updateScoreTwo(User user) {
 		int result = dao.updateSurveyTwo(user);
 		if(result == 1) {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 성공");
 		} else {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 실패");
 		}
 	}
 	
 	public void updateScoreThree(User user) {
 		int result = dao.updateSurveyThree(user);
 		if(result == 1) {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 성공");
 		} else {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 실패");
 		}
 	}
 	
 	public void updateScoreFour(User user) {
 		int result = dao.updateSurveyFour(user);
 		if(result == 1) {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 성공");
 		} else {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 실패");
 		}
 	}
 	
 	public void updateUserCharacter(User user) {
 		int result = dao.updateUserCharacter(user);
 		if(result == 1) {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 성공");
 		} else {
-			log.debug("���� ���� ����");
+			log.debug("업데이트 실패");
 		}
 	}
 

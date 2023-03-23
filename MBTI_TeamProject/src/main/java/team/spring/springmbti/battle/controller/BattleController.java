@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -37,38 +38,17 @@ public class BattleController {
 	@Autowired
 	UserService uService;
 	
-	@ModelAttribute("myCharacter")
-	public CharacterInfo createCharacter() {
-		CharacterInfo character = new CharacterInfo();
-		return character;
-	}
-	@ModelAttribute("myUser")
-	public User putUser() {
-		User user = new User();
-		return user;
-	}
-	
-	@ModelAttribute("battleCharacter")
-	public CharacterInfo createBattleCharacter() {
-		CharacterInfo character = new CharacterInfo();
-		return character;
-	}
-	@ModelAttribute("battleUser")
-	public User putBattleUser() {
-		User user = new User();
-		return user;
-	}
 	
 	@GetMapping
-	public String battle(HttpSession session, Model model, @ModelAttribute("myCharacter") CharacterInfo myCharacter, @ModelAttribute("myUser") User myUser,
-			@ModelAttribute("battleCharacter") CharacterInfo battleCharacter, @ModelAttribute("battleUser") User battleUser, String battleField) throws JsonProcessingException {
+	public String battle(HttpSession session, Model model, @RequestParam(value="battleField",
+			required=false) String battleField) throws JsonProcessingException {
 		
 		log.debug("들어온건가");
+		CharacterInfo myCharacter = (CharacterInfo)session.getAttribute("myCharacter");
+		User myUser = (User)session.getAttribute("myUser");
+		CharacterInfo battleCharacter = (CharacterInfo)session.getAttribute("battleCharacter");
+		User battleUser = (User)session.getAttribute("battleUser");
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
-		session.setAttribute("myCharacter", myCharacter);
-		session.setAttribute("myUser", myUser);
-		session.setAttribute("battleCharacter", battleCharacter);
-		session.setAttribute("battleUser", battleUser);
 		ObjectMapper mapper = new ObjectMapper();
 	    String battleLogInfo = mapper.writeValueAsString(battleLog);
 		return battleLogInfo;
@@ -90,6 +70,7 @@ public class BattleController {
 		for(User user : list) {
 			JSONObject obj=new JSONObject();
 			obj.put("userName",user.getUserName());
+			obj.put("userNum",user.getUserNum());
 			obj.put("userMBTI",user.getUserMBTI());
 			obj.put("userWin",user.getUserWin());
 			obj.put("userPoint",user.getUserPoint());

@@ -96,6 +96,7 @@ public class LoginController {
 	    character = cService.getCharacter(userCharacterNum);
 	    
 	    session.setAttribute("myUser", user);
+	    log.debug(user);
 	    session.setAttribute("myCharacter", character);
 	    
 	    MBTIResult mbtiresult = new MBTIResult();
