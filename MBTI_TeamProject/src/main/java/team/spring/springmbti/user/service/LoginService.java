@@ -78,6 +78,11 @@ public class LoginService {
 		
 		int count = dao.reJoin(userEmail);
 	}
+
+	public User getUser(String email) {
+		User user = dao.emailCheck(email);
+		return user;
+	}
 	
 	
 	

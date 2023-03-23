@@ -3,8 +3,6 @@ package team.spring.springmbti.user.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.logging.log4j.LogManager;
@@ -76,10 +74,8 @@ public class MyPageController {
    }
    
    @DeleteMapping(value = "character")
-   public String deleteCharacter(HttpSession session,
-         @ModelAttribute("myUser") User user, 
-         HttpServletResponse response,
-         HttpServletRequest request, @RequestBody Map<String,String> data) {
+   public String deleteCharacter(
+          @RequestBody Map<String,String> data)  throws JsonProcessingException {
       
       log.debug("@DeleteMapping 호출");
       log.debug(data.get("userCharacterNum"));
@@ -89,8 +85,11 @@ public class MyPageController {
       if(count==1) {
          log.debug("성공적으로 캐릭터 삭제 완료!");
       }
-      log.debug(user.toString());
-      return "성공적으로 캐릭터 삭제 완료";
+      User user = new User();
+      user = loginservice.getUser(data.get("userEmail"));
+      ObjectMapper mapper = new ObjectMapper();
+      String userInfo = mapper.writeValueAsString(user);
+      return userInfo;
      
    }
     
