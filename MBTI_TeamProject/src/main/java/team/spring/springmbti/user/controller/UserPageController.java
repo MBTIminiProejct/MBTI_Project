@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import team.spring.springmbti.mbti.service.MBTIService;
+import team.spring.springmbti.mbti.vo.MBTIResult;
 import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
 
@@ -30,6 +32,9 @@ public class UserPageController {
 	
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private MBTIService mbtiservice;
 	
 	@GetMapping(value="readUserPage")
 	public String userPage(@RequestParam(value="index", required=false) 
@@ -44,21 +49,20 @@ public class UserPageController {
 		return userInfo;
 	}
 	
-//	@PostMapping(value = "readUserPage")
-//	public JSONArray getRanking() {
-//		User user = service.getRankingOne(2);
-//		JSONArray arr = new JSONArray();
-//		for(User user : user) {
-//			JSONObject obj=new JSONObject();
-//			obj.put("userName",user.getUserName());
-//			obj.put("userNum",user.getUserNum());
-//			obj.put("userMBTI",user.getUserMBTI());
-//			obj.put("userWin",user.getUserWin());
-//			obj.put("userPoint",user.getUserPoint());
-//			arr.add(obj);
-//		}
-//		
-//
-//		return arr;
-//	}
+	@GetMapping(value="readMbtiPage")
+	public String mbtiPage(@RequestParam(value="index", required=false) 
+					int index,HttpSession session, Model model)throws JsonProcessingException{
+		log.debug("Test" + index);
+		int realindex = index + 1;
+		User user = service.getRankingOne(realindex);
+		MBTIResult mbti = mbtiservice.getMBTI(user.getUserMBTI());
+		
+		 ObjectMapper mapper = new ObjectMapper();
+		 String mbtiImg = mapper.writeValueAsString(mbti);
+	      
+		
+		return mbtiImg;
+	}
+	
+
 }
