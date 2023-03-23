@@ -86,16 +86,17 @@ public class BattleService {
 		dmg = a.getCharacterAD() * (random.nextInt(99) + 50) * 0.01;
 		critical = random.nextInt(70) + a.getCharacterCritical();
 		if (critical >= 100) {
-			bLog.append(critical + "크리티컬공격! \n");
+			bLog.append("크리티컬공격!  ");
 			dmg = dmg * 2;
 		}
 		dmg = dmg - (d.getCharacterADDefence()/2);
 		if (dmg <= 0) {
 			bLog.append("최종데미지가 0 이하이므로 데미지 0처리 \n");
+			dmg = 0;
 		}
 		miss = d.getCharacterAvoidanceRate() + random.nextInt(90) - a.getCharacterHitRate();
 		if (miss  >= 99) {
-			bLog.append(miss + "miss! \n");
+			bLog.append("miss! \n");
 			dmg = 0;
 		}
 		dmg = dmg + (0.2 * a.getCharacterAdditionalDmg());
@@ -117,12 +118,13 @@ public class BattleService {
 		dmg = a.getCharacterAP() * (random.nextInt(99) + 50) * 0.01;
 		critical = random.nextInt(70) + a.getCharacterCritical();
 		if (critical >= 99) {
-			bLog.append("크리티컬공격! \n");
+			bLog.append("크리티컬공격!  ");
 			dmg = dmg * 2;
 		}
 		dmg = dmg - (d.getCharacterAPDefence()/2);
 		if (dmg <= 0) {
 			bLog.append("최종데미지가 0 이하이므로 데미지 0처리 \n");
+			dmg = 0;
 		}
 		miss = d.getCharacterAvoidanceRate() + random.nextInt(90) - a.getCharacterHitRate();
 		if (miss  >= 96) {
