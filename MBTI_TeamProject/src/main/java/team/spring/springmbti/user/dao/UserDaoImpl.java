@@ -136,6 +136,20 @@ public class UserDaoImpl implements UserDao {
 		User userpage = session.selectOne("myUser.checkUserPage", userNum);
 		return userpage;
 	}
+
+	@Override
+	public int chageUserAcceptNo(String userNum) {
+		
+		int cnt = session.update("myUser.chageUserAcceptNo", userNum);
+		return cnt;
+	}
+	
+	@Override
+	public int chageUserAcceptYes(String userNum) {
+		
+		int cnt = session.update("myUser.chageUserAcceptYes", userNum);
+		return cnt;
+	}
 	
 	
 	

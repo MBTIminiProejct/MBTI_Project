@@ -38,5 +38,9 @@ public interface UserDao {
 	int checkExistUser(String battleUserNum);
 
 	User getUserPage(String count);
+
+	int chageUserAcceptNo(String userNum);
+
+	int chageUserAcceptYes(String userNum);
 	
 }
