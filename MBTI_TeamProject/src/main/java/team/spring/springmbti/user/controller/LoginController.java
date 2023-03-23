@@ -91,9 +91,9 @@ public class LoginController {
         }
         int userNum = service.getUserNum(user);
         user = service.getUserInfo(Integer.toString(userNum));
-	    int userCharacterNum = service.getUserCharacterNum(userNum);
+//	    int userCharacterNum = service.getUserCharacterNum(userNum);
 	    CharacterInfo character = new CharacterInfo();
-	    character = cService.getCharacter(userCharacterNum);
+	    character = cService.getCharacter(user.getUserCharacter());
 	    
 	    session.setAttribute("myUser", user);
 	    log.debug(user);

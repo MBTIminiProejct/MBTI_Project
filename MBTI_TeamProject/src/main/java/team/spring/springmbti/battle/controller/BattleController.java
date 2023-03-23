@@ -21,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import team.spring.springmbti.battle.service.BattleService;
 import team.spring.springmbti.battle.vo.BattleLog;
+import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.user.service.UserService;
 import team.spring.springmbti.user.vo.User;
@@ -38,30 +39,40 @@ public class BattleController {
 	@Autowired
 	UserService uService;
 	
+	@Autowired
+	CharacterService cService;
+	
 	
 	@GetMapping
-	public String battle(HttpSession session, Model model, @RequestParam(value="battleField",
-			required=false) String battleField) throws JsonProcessingException {
+	public String battle(@RequestParam(value="battleField", required=false) String battleField, @RequestParam(value="userNum",
+			required=false) String userNum, @RequestParam(value="battleUserNum", 
+			required=false) String battleUserNum) throws JsonProcessingException {
 		
 		log.debug("들어온건가");
-		CharacterInfo myCharacter = (CharacterInfo)session.getAttribute("myCharacter");
-		User myUser = (User)session.getAttribute("myUser");
-		CharacterInfo battleCharacter = (CharacterInfo)session.getAttribute("battleCharacter");
-		User battleUser = (User)session.getAttribute("battleUser");
+		User myUser = uService.getUserInfo(userNum);
+	    CharacterInfo myCharacter = cService.getCharacter(myUser.getUserCharacter());
+	    log.debug(myUser);
+	    log.debug(myCharacter);
+	    
+		CharacterInfo battleCharacter = cService.getCharacter(Integer.valueOf(battleUserNum));
+		User battleUser = uService.getUserInfo(battleUserNum);
+		log.debug(battleUser);
+	    log.debug(battleCharacter);
+		
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
 		ObjectMapper mapper = new ObjectMapper();
 	    String battleLogInfo = mapper.writeValueAsString(battleLog);
 		return battleLogInfo;
 	}
 	
-	@GetMapping(value = "searchBattleUser")
-	public String searchBattleUser(HttpSession session) {
-		
-		User user = (User)session.getAttribute("myUser");
-		// 내캐릭터 받아오기
-		log.debug(user);
-		return "searchBattleUser";
-	}
+//	@GetMapping(value = "searchBattleUser")
+//	public String searchBattleUser(HttpSession session) {
+//		
+//		User user = (User)session.getAttribute("myUser");
+//		// 내캐릭터 받아오기
+//		log.debug(user);
+//		return "searchBattleUser";
+//	}
 	
 	@GetMapping(value = "ranking")
 	public JSONArray getRanking() {

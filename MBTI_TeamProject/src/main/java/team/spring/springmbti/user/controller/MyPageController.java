@@ -107,23 +107,26 @@ public class MyPageController {
    }
 	
 	@GetMapping(value = "battleuser")
-	public Map<String, String> getUserInfo(HttpSession session, @RequestParam(value="battleUserNum",
+	public Map<String, String> getUserInfo(@RequestParam(value="battleUserNum",
 							required=false) String battleUserNum) throws JsonProcessingException {
 
 		Logger log = LogManager.getLogger("case3");
 		
 		boolean checkUser = loginservice.checkExistUser(battleUserNum);
+		log.debug(checkUser);
 		Map<String, String> map = new HashMap<String, String>();
+		
 		if (!checkUser) {
 			map.put("nonUser", "nonUser");
+			log.debug(map);
 			return map;
 		} else {
 			User user = new User();
 			user = service.getUserInfo(battleUserNum);
 			CharacterInfo character = new CharacterInfo();
 			character = cService.getCharacter(user.getUserCharacter());
-			session.setAttribute("battleUser", user);
-			session.setAttribute("battleCharacter", character);
+//			session.setAttribute("battleUser", user);
+//			session.setAttribute("battleCharacter", character);
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String competionUserInfo = mapper.writeValueAsString(user);
@@ -134,24 +137,25 @@ public class MyPageController {
 			return map;
 		}
 	}
-	@GetMapping(value = "battlecharacter")
-	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
-		
-		Logger log = LogManager.getLogger("case3");
-		
-		CharacterInfo character = (CharacterInfo)session.getAttribute("battleCharacter");
-	
-		log.debug("적 캐릭터" + character);
-		ObjectMapper mapper = new ObjectMapper();
-	    String competionCharacterInfo = mapper.writeValueAsString(character);
-		return competionCharacterInfo;
-		
-	}
+//	@GetMapping(value = "battlecharacter")
+//	public String getCharacterInfo(HttpSession session) throws JsonProcessingException {
+//		
+//		Logger log = LogManager.getLogger("case3");
+//		
+//		CharacterInfo character = (CharacterInfo)session.getAttribute("battleCharacter");
+//	
+//		log.debug("적 캐릭터" + character);
+//		ObjectMapper mapper = new ObjectMapper();
+//	    String competionCharacterInfo = mapper.writeValueAsString(character);
+//		return competionCharacterInfo;
+//		
+//	}
 	
 	@GetMapping(value ="useraccpet")
-	public int changeUserAeccpet(HttpSession session) {
+	public int changeUserAeccpet(@RequestParam(value="userNum",
+			required=false) String userNum) {
 		
-		User user = (User)session.getAttribute("myUser");
+		User user = service.getUserInfo(userNum);
 		
 		int reuslt = service.changeUserAccept(user);
 		
