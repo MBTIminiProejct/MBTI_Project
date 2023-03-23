@@ -14,8 +14,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -339,7 +337,7 @@ public class SurveyController {
         
         session.setAttribute("myCharacter", characterinfo);
          characterinfo = (CharacterInfo)session.getAttribute("myCharacter");
-        log.debug(characterinfo);
+        log.debug("생성된 캐릭터!!!!!!!!!!!!!!!!"+characterinfo);
       
       ObjectMapper mapper = new ObjectMapper();
        String characterInfo = mapper.writeValueAsString(characterinfo);
