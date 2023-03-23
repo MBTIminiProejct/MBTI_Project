@@ -152,14 +152,19 @@ public class MyPageController {
 //	}
 	
 	@GetMapping(value ="useraccpet")
-	public int changeUserAeccpet(@RequestParam(value="userNum",
-			required=false) String userNum) {
+	public String changeUserAeccpet(@RequestParam(value="userNum",
+			required=false) String userNum) throws JsonProcessingException {
 		
 		User user = service.getUserInfo(userNum);
 		
 		int reuslt = service.changeUserAccept(user);
 		
-		return reuslt;
+		user = service.getUserInfo(userNum);
+		
+		ObjectMapper mapper = new ObjectMapper();
+	    String userinfo = mapper.writeValueAsString(user);
+	    
+		return userinfo;
 	}
 	
 //	@GetMapping(value = "mbti")
