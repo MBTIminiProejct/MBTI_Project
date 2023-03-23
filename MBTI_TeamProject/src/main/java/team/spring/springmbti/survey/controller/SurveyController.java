@@ -91,7 +91,7 @@ public class SurveyController {
    @GetMapping("/parttwo/surveytwo")
    public Map<String, String> handler02(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
-      log.debug("handler01() 성공");
+      log.debug("handler02() 성공");
       //request.setCharacterEncoding("UTF-8");
       //int qnum = Integer.parseInt(request.getParameter("qnum"));
       //int onum = Integer.parseInt(request.getParameter("onum"));
@@ -106,7 +106,7 @@ public class SurveyController {
    @GetMapping("/partthree/surveythree")
    public Map<String, String> handler03(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
-      log.debug("handler01() 성공");
+      log.debug("handler03() 성공");
       //request.setCharacterEncoding("UTF-8");
       //int qnum = Integer.parseInt(request.getParameter("qnum"));
       //int onum = Integer.parseInt(request.getParameter("onum"));
@@ -121,7 +121,7 @@ public class SurveyController {
    @GetMapping("/partfour/surveyfour")
    public Map<String, String> handler04(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
-      log.debug("handler01() 성공");
+      log.debug("handler04() 성공");
       //request.setCharacterEncoding("UTF-8");
       //int qnum = Integer.parseInt(request.getParameter("qnum"));
       //int onum = Integer.parseInt(request.getParameter("onum"));
@@ -240,15 +240,16 @@ public class SurveyController {
          @RequestParam(value="speed", required=false) int speed,
          @RequestParam(value="email", required=false) String email,
          Model model, CharacterInfo characterinfo,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JsonProcessingException {
-      log.debug("handler001() 성공");
+      log.debug("handler004() 성공");
       request.setCharacterEncoding("UTF-8");
       log.debug(qone);
       int qtotal = qone + qtwo + qthree + qfour + qfive;
       int total = qtotal - 15;
       int nqtotal = total*-1;
-      
+      log.debug("P,J Check" + qtotal +","+nqtotal);
       User user = new User();
       user.setUserEmail(email);
+      user = loginservice.getUser(email);
       log.debug(user);
       user.setUserP(nqtotal);
       user.setUserJ(qtotal);
@@ -258,7 +259,7 @@ public class SurveyController {
       String typefour = new String();
       String mbti = new String();
       
-      user = loginservice.getUser(email);
+      
       
       int lone = user.getUserE();
       int ltwo = user.getUserI();
