@@ -101,6 +101,10 @@ public class LoginController {
 	    
 	    MBTIResult mbtiresult = new MBTIResult();
 	    mbtiresult = mbtiservice.getMBTI(user.getUserMBTI());
+	    if(mbtiresult==null) {
+	    	mbtiresult = new MBTIResult();
+	    	mbtiresult.setMBTIImgurl("https://i.imgur.com/oMQzKAv.jpg");
+	    }
 	    
 	    ObjectMapper mapper = new ObjectMapper();
 	    String userInfo = mapper.writeValueAsString(user);

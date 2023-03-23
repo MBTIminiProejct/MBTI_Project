@@ -1,14 +1,8 @@
 package team.spring.springmbti.user.controller;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,8 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import team.spring.springmbti.character.service.CharacterService;
 import team.spring.springmbti.character.vo.CharacterInfo;
@@ -85,34 +76,22 @@ public class MyPageController {
    }
    
    @DeleteMapping(value = "character")
-   public void deleteCharacter(HttpSession session,
+   public String deleteCharacter(HttpSession session,
          @ModelAttribute("myUser") User user, 
          HttpServletResponse response,
-         HttpServletRequest request, @RequestParam(value="userCharacterNum",
-			required=false) String userCharacterNum)throws ServletException, IOException {
+         HttpServletRequest request, @RequestBody Map<String,String> data) {
       
       log.debug("@DeleteMapping 호출");
-      log.debug(userCharacterNum);
+      log.debug(data.get("userCharacterNum"));
       
-   //   request.setCharacterEncoding("UTF-8");
-   //    int qone = Integer.parseInt(request.getParameter("num"));
-      
-   //   user = (User)session.getAttribute("myUser");
-    //  log.debug("여기로 오면 좋겠어");
-  //    int userNum = service.getUserNum(user);
-   //   int userCharacterNum = service.getUserCharacterNum(userNum);
-      log.debug("test");
-      log.debug(userCharacterNum);      
-      int count = service.deleteCharacter(Integer.valueOf(userCharacterNum));
+       
+      int count = service.deleteCharacter(Integer.parseInt(data.get("userCharacterNum")));
       if(count==1) {
          log.debug("성공적으로 캐릭터 삭제 완료!");
       }
-     // Gson gson = new Gson();
-     //  JsonObject jsonObject = new JsonObject();
-      // jsonObject.addProperty("num",qone);
-      // String find = gson.toJson(jsonObject);
-     //  response.getWriter().write(find);
-      //
+      log.debug(user.toString());
+      return "성공적으로 캐릭터 삭제 완료";
+     
    }
     
    @DeleteMapping("deleteUser")
