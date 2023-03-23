@@ -47,10 +47,10 @@ public class User {
 	}
 	
 	public String getUserAcceptance() {
-		if (this.userAcceptance == true) {
-			return "허용";
+		if (this.userAcceptance) {
+			return "대결불가";
 		} else
-			return "대결 불가능";
+			return "대결허용";
 	}
 	
 }

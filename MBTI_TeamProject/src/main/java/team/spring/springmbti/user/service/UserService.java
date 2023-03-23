@@ -72,4 +72,16 @@ public User getRankingOne(int cnt) {
 		return user;
 	}
 
+	public int changeUserAccept(User user) {
+		
+		int result = 0;
+				
+		if (user.getUserAcceptance().equals("대결불가")) {
+			result = dao.chageUserAcceptYes(user.getUserNum());
+		} else {
+			result = dao.chageUserAcceptNo(user.getUserNum());
+		}
+		return result;
+	}
+
 }

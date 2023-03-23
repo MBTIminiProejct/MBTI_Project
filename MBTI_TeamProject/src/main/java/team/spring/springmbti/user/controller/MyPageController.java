@@ -149,6 +149,16 @@ public class MyPageController {
 		
 	}
 	
+	@GetMapping(value ="useraccpet")
+	public int changeUserAeccpet(HttpSession session) {
+		
+		User user = (User)session.getAttribute("myUser");
+		
+		int reuslt = service.changeUserAccept(user);
+		
+		return reuslt;
+	}
+	
 //	@GetMapping(value = "mbti")
 //	public void setUserMbti(HttpSession session, @RequestParam(value="userMbti",
 //			required=false) String userMbti) {
