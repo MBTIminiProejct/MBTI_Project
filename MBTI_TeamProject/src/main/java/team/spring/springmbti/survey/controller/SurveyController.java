@@ -140,8 +140,6 @@ public class SurveyController {
       user.setUserI(nqtotal);
       user.setUserE(qtotal);
       
-      
-
       surveyservice.updateScoreOne(user);
       
       Map<String, Integer> map = new HashMap<String, Integer>();
@@ -213,102 +211,93 @@ public class SurveyController {
          @RequestParam(value="speed", required=false) int speed,
          @RequestParam(value="email", required=false) String email,
          Model model, CharacterInfo characterinfo,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JsonProcessingException {
-      log.debug("handler004() 성공");
-      request.setCharacterEncoding("UTF-8");
-      int qtotal = qone + qtwo + qthree + qfour + qfive;
-      int total = qtotal - 15;
-      int nqtotal = total*-1;
-      log.debug("P,J Check" + qtotal +","+nqtotal);
-      User user = new User();
-      user.setUserEmail(email);
-      user = loginservice.getUser(email);
-      user.setUserP(nqtotal);
-      user.setUserJ(qtotal);
-      String typeone = new String();
-      String typetwo = new String();
-      String typethree = new String();
-      String typefour = new String();
-      String mbti = new String();
-      
-      
-      
-      int lone = user.getUserE();
-      int ltwo = user.getUserI();
-      int lthree = user.getUserS();
-      int lfour = user.getUserN();
-      int lfive = user.getUserF();
-      int lsix = user.getUserT();
-      int lseven = user.getUserJ();
-      int leight = user.getUserP();
-      
-      if (lone > ltwo) {
-         typeone = "E";
-      } else {
-         typeone = "I";
-      }
-      
-      if (lthree > lfour) {
-         typetwo = "S";
-      } else {
-         typetwo = "N";
-      }
+		log.debug("handler004() 성공");
+		request.setCharacterEncoding("UTF-8");
+		int qtotal = qone + qtwo + qthree + qfour + qfive;
+		int total = qtotal - 15;
+		int nqtotal = total * -1;
+		log.debug("P,J Check" + qtotal + "," + nqtotal);
+		User user = new User();
+		user.setUserEmail(email);
+		user = loginservice.getUser(email);
+		user.setUserP(nqtotal);
+		user.setUserJ(qtotal);
+		String typeone = new String();
+		String typetwo = new String();
+		String typethree = new String();
+		String typefour = new String();
+		String mbti = new String();
 
-      if (lfive > lsix) {
-         typethree = "F";
-      } else {
-         typethree = "T";
-      }
-      
-      if (lseven > leight) {
-         typefour = "J";
-      } else {
-         typefour = "P";
-      }
-      
-      mbti = typeone + typetwo + typethree + typefour;
-      user.setUserMBTI(mbti);
-      surveyservice.updateScoreFour(user);
-     
-      if (speed == 2) {
-          CharacterInfo character = 
-                    new CharacterInfo(100, 10, 10, 5 , 5 , 11, 10 , 10 , 30  ,0 );
-      
-          int result = characterservice.createCharacter(character);
-      } else {
-    	  CharacterInfo character = 
-    	            new CharacterInfo(100, 10, 10, 5 , 5 , 9, 10 , 10 , 30  ,0 );  
-    	  
-    	  int result = characterservice.createCharacter(character);
-      }
-      
-      
-      int maxresult = characterservice.maxCharacter();
-      
-      user.setUserCharacter(maxresult); 
-      
-      
-      
-        int characternum = user.getUserCharacter();
-        
-        
-        
-        surveyservice.updateUserCharacter(user);
-        
-        characterinfo = 
-            new CharacterInfo(characternum,100, 10 + lone, 10 + ltwo, 5 + lthree, 5 + lfour, 10, 10 + lfive, 10 + lsix, 30 + lseven ,0 + leight);
-         int characterresult = characterservice.updateCharacter(characterinfo);
-        
-        characterinfo = characterservice.getCharacter(characternum);
-        
-        log.debug("생성된 캐릭터!"+characterinfo);
-      
-      ObjectMapper mapper = new ObjectMapper();
-      String characterInfo = mapper.writeValueAsString(characterinfo);
-      String userInfo = mapper.writeValueAsString(user);
-      Map<String,String> map = new HashMap<String, String>();
-      map.put("userInfo",userInfo);
-      map.put("characterInfo",characterInfo);
-      return map;
+		int lone = user.getUserE();
+		int ltwo = user.getUserI();
+		int lthree = user.getUserS();
+		int lfour = user.getUserN();
+		int lfive = user.getUserF();
+		int lsix = user.getUserT();
+		int lseven = user.getUserJ();
+		int leight = user.getUserP();
+
+		if (lone > ltwo) {
+			typeone = "E";
+		} else {
+			typeone = "I";
+		}
+
+		if (lthree > lfour) {
+			typetwo = "S";
+		} else {
+			typetwo = "N";
+		}
+
+		if (lfive > lsix) {
+			typethree = "F";
+		} else {
+			typethree = "T";
+		}
+
+		if (lseven > leight) {
+			typefour = "J";
+		} else {
+			typefour = "P";
+		}
+
+		mbti = typeone + typetwo + typethree + typefour;
+		user.setUserMBTI(mbti);
+		surveyservice.updateScoreFour(user);
+
+		if (speed == 2) {
+			CharacterInfo character = new CharacterInfo(100, 10, 10, 5, 5, 11, 10, 10, 30, 0);
+
+			int result = characterservice.createCharacter(character);
+		} else {
+			CharacterInfo character = new CharacterInfo(100, 10, 10, 5, 5, 9, 10, 10, 30, 0);
+
+			int result = characterservice.createCharacter(character);
+		}
+
+		int maxresult = characterservice.maxCharacter();
+
+		user.setUserCharacter(maxresult);
+
+		int characternum = user.getUserCharacter();
+
+		surveyservice.updateUserCharacter(user);
+
+		characterinfo = new CharacterInfo(characternum, 100, 10 + lone, 10 + ltwo, 5 + lthree, 5 + lfour, 10,
+				10 + lfive, 10 + lsix, 30 + lseven, 0 + leight);
+		int characterresult = characterservice.updateCharacter(characterinfo);
+
+		characterinfo = characterservice.getCharacter(characternum);
+
+		log.debug("생성된 캐릭터!" + characterinfo);
+
+		ObjectMapper mapper = new ObjectMapper();
+		String characterInfo = mapper.writeValueAsString(characterinfo);
+		String userInfo = mapper.writeValueAsString(user);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userInfo", userInfo);
+		map.put("characterInfo", characterInfo);
+		return map;
    }
    
    @GetMapping(value = "/partfour/sbuttonfour/user")
