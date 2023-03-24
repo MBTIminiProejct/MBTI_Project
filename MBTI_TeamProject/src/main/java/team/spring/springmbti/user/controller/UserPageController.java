@@ -37,10 +37,10 @@ public class UserPageController {
 		log.debug("Test" + index);
 		int realindex = index + 1;
 		User user = service.getRankingOne(realindex);
-		log.debug(user);
+		
 		 ObjectMapper mapper = new ObjectMapper();
 	       String userInfo = mapper.writeValueAsString(user);
-		log.debug(userInfo);
+		
 		return userInfo;
 	}
 	

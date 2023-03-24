@@ -40,7 +40,7 @@ public class SurveyDaoImpl implements SurveyDao {
 			
 			log.debug("성공!");
 		} else {
-			log.debug("����!");
+			log.debug("실패!");
 		}
 		
 		return result;
@@ -53,7 +53,7 @@ public class SurveyDaoImpl implements SurveyDao {
 			
 			log.debug("성공!");
 		} else {
-			log.debug("����!");
+			log.debug("실패!");
 		}
 		
 		return result;
@@ -66,7 +66,7 @@ public class SurveyDaoImpl implements SurveyDao {
 			
 			log.debug("성공!");
 		} else {
-			log.debug("����!");
+			log.debug("실패!");
 		}
 		
 		return result;
@@ -79,7 +79,7 @@ public class SurveyDaoImpl implements SurveyDao {
 			
 			log.debug("성공!");
 		} else {
-			log.debug("����!");
+			log.debug("실패!");
 		}
 		
 		return result;

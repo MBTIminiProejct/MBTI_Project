@@ -126,12 +126,12 @@ $("input[name=myRadio1]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var eold = eoldValue - 20;
 				
 				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var eold = eoldValue - 10;
 				$('#efile').attr("value",eold);	
 				
@@ -139,14 +139,14 @@ $("input[name=myRadio1]").mouseup(function() {
 				
 				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var iold = ioldValue - 10;
 				$('#ifile').attr("value",iold);
 				var eold = eoldValue - 10;
 				$('#efile').attr("value",eold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var iold = ioldValue - 20;
 				$('#ifile').attr("value",iold);
 			} else {
@@ -159,25 +159,25 @@ $("input[name=myRadio1]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = eold + 20;
 				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = eold + 10;
 				$('#efile').attr("value",number);
 				var number = iold + 10;
 				$('#ifile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = iold + 10;
 				$('#ifile').attr("value",number);
 				var number = eold + 10;
 				$('#efile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = iold + 20;
 				$('#ifile').attr("value",number);
 		} else {
@@ -229,10 +229,10 @@ $("input[name=myRadio1]").mouseup(function() {
 
 $("input[name=myRadio2]").mouseup(function() {
 	 oldnum= $('input[name=myRadio2]:checked').val();
-	//console.log(oldnum2);
+	
 }).change(function () {
 	var changenum = $('input[name=myRadio2]:checked').val();
-	//console.log(changenum2);
+	
 	var eoldValue = Number($('#efile').attr("value"));
 	
 	var ioldValue = Number($('#ifile').attr("value"));
@@ -250,19 +250,19 @@ $("input[name=myRadio2]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var eold = eoldValue - 20;
 				
 				$('#efile').attr("value",eold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var eold = eoldValue - 10;
 				$('#efile').attr("value",eold);	
 				var iold = ioldValue - 10;
 				
 				$('#ifile').attr("value",iold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var eold = eoldValue - 10;
 				$('#efile').attr("value",eold);
 				var iold = ioldValue - 10;
@@ -270,7 +270,7 @@ $("input[name=myRadio2]").mouseup(function() {
 				$('#ifile').attr("value",iold);
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var iold = ioldValue - 20;
 				$('#ifile').attr("value",iold);
 			} else {
@@ -283,25 +283,25 @@ $("input[name=myRadio2]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = eold + 20;
 				$('#efile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = eold + 10;
 				$('#efile').attr("value",number);
 				var number = iold + 10;
 				
 				$('#ifile').attr("value",number);
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = eold + 10;
 				$('#efile').attr("value",number);
 				var number = iold + 10;
 				
 				$('#ifile').attr("value",number);
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = iold + 20;
 				$('#ifile').attr("value",number);
 		} else {
@@ -723,15 +723,10 @@ function sbutton1() {
 				},
 		success : function(data) {
 			
-			//var values = Object.values(data);
 			
-			
-			//if(data['ajaxresult'] == 7){
 			
 			console.log('성공!!');
-			//} else {
-				
-			//}
+			
 		},
 		error: function(data) {
 			alert('ajax 실패!');

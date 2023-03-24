@@ -126,12 +126,12 @@ $("input[name=myRadio1]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var jold = joldValue - 20;
 				
 				$('#jfile').attr("value",jold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
@@ -139,14 +139,14 @@ $("input[name=myRadio1]").mouseup(function() {
 				
 				$('#pfile').attr("value",pold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var pold = poldValue - 10;
 				$('#pfile').attr("value",pold);
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var pold = poldValue - 20;
 				$('#pfile').attr("value",pold);
 			} else {
@@ -159,25 +159,25 @@ $("input[name=myRadio1]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = jold + 20;
 				$('#jfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = pold + 20;
 				$('#pfile').attr("value",number);
 		} else {
@@ -250,12 +250,12 @@ $("input[name=myRadio2]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var jold = joldValue - 20;
 				
 				$('#jfile').attr("value",jold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
@@ -263,14 +263,14 @@ $("input[name=myRadio2]").mouseup(function() {
 				
 				$('#pfile').attr("value",pold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var pold = poldValue - 10;
 				$('#pfile').attr("value",pold);
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var pold = poldValue - 20;
 				$('#pfile').attr("value",pold);
 			} else {
@@ -283,25 +283,25 @@ $("input[name=myRadio2]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = jold + 20;
 				$('#jfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = pold + 20;
 				$('#pfile').attr("value",number);
 		} else {
@@ -374,12 +374,12 @@ $("input[name=myRadio3]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var jold = joldValue - 20;
 				
 				$('#jfile').attr("value",jold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
@@ -387,14 +387,14 @@ $("input[name=myRadio3]").mouseup(function() {
 				
 				$('#pfile').attr("value",pold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var pold = poldValue - 10;
 				$('#pfile').attr("value",pold);
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var pold = poldValue - 20;
 				$('#pfile').attr("value",pold);
 			} else {
@@ -407,25 +407,25 @@ $("input[name=myRadio3]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = jold + 20;
 				$('#jfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = pold + 20;
 				$('#pfile').attr("value",number);
 		} else {
@@ -498,12 +498,12 @@ $("input[name=myRadio4]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var jold = joldValue - 20;
 				
 				$('#jfile').attr("value",jold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
@@ -511,14 +511,14 @@ $("input[name=myRadio4]").mouseup(function() {
 				
 				$('#pfile').attr("value",pold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var pold = poldValue - 10;
 				$('#pfile').attr("value",pold);
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var pold = poldValue - 20;
 				$('#pfile').attr("value",pold);
 			} else {
@@ -531,25 +531,25 @@ $("input[name=myRadio4]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = jold + 20;
 				$('#jfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = pold + 20;
 				$('#pfile').attr("value",number);
 		} else {
@@ -622,12 +622,12 @@ $("input[name=myRadio5]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var jold = joldValue - 20;
 				
 				$('#jfile').attr("value",jold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
@@ -635,14 +635,14 @@ $("input[name=myRadio5]").mouseup(function() {
 				
 				$('#pfile').attr("value",pold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var pold = poldValue - 10;
 				$('#pfile').attr("value",pold);
 				var jold = joldValue - 10;
 				$('#jfile').attr("value",jold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var pold = poldValue - 20;
 				$('#pfile').attr("value",pold);
 			} else {
@@ -655,25 +655,25 @@ $("input[name=myRadio5]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = jold + 20;
 				$('#jfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = pold + 10;
 				$('#pfile').attr("value",number);
 				var number = jold + 10;
 				$('#jfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = pold + 20;
 				$('#pfile').attr("value",number);
 		} else {
@@ -729,7 +729,7 @@ function sbutton4() {
 	var result = confirm("MBTI 설문조사 최종 제출하시겠습니까");
     
     if (result == true){  
-         // document.removefrm.submit();
+         
          
          $.ajax({
      		url : "sbutton4",

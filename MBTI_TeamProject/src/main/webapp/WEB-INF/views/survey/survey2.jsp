@@ -125,12 +125,12 @@ $("input[name=myRadio1]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var sold = soldValue - 20;
 				
 				$('#sfile').attr("value",sold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
@@ -138,14 +138,14 @@ $("input[name=myRadio1]").mouseup(function() {
 				
 				$('#nfile').attr("value",nold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var nold = noldValue - 10;
 				$('#nfile').attr("value",nold);
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var nold = noldValue - 20;
 				$('#nfile').attr("value",nold);
 			} else {
@@ -158,25 +158,25 @@ $("input[name=myRadio1]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = sold + 20;
 				$('#sfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = nold + 20;
 				$('#nfile').attr("value",number);
 		} else {
@@ -249,12 +249,12 @@ $("input[name=myRadio2]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var sold = soldValue - 20;
 				
 				$('#sfile').attr("value",sold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
@@ -262,14 +262,14 @@ $("input[name=myRadio2]").mouseup(function() {
 				
 				$('#nfile').attr("value",nold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var nold = noldValue - 10;
 				$('#nfile').attr("value",nold);
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var nold = noldValue - 20;
 				$('#nfile').attr("value",nold);
 			} else {
@@ -282,25 +282,25 @@ $("input[name=myRadio2]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = sold + 20;
 				$('#sfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = nold + 20;
 				$('#nfile').attr("value",number);
 		} else {
@@ -373,12 +373,12 @@ $("input[name=myRadio3]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var sold = soldValue - 20;
 				
 				$('#sfile').attr("value",sold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
@@ -386,14 +386,14 @@ $("input[name=myRadio3]").mouseup(function() {
 				
 				$('#nfile').attr("value",nold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var nold = noldValue - 10;
 				$('#nfile').attr("value",nold);
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var nold = noldValue - 20;
 				$('#nfile').attr("value",nold);
 			} else {
@@ -406,25 +406,25 @@ $("input[name=myRadio3]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = sold + 20;
 				$('#sfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = nold + 20;
 				$('#nfile').attr("value",number);
 		} else {
@@ -497,12 +497,12 @@ $("input[name=myRadio4]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var sold = soldValue - 20;
 				
 				$('#sfile').attr("value",sold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
@@ -510,14 +510,14 @@ $("input[name=myRadio4]").mouseup(function() {
 				
 				$('#nfile').attr("value",nold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var nold = noldValue - 10;
 				$('#nfile').attr("value",nold);
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var nold = noldValue - 20;
 				$('#nfile').attr("value",nold);
 			} else {
@@ -530,25 +530,25 @@ $("input[name=myRadio4]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = sold + 20;
 				$('#sfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = nold + 20;
 				$('#nfile').attr("value",number);
 		} else {
@@ -621,12 +621,12 @@ $("input[name=myRadio5]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var sold = soldValue - 20;
 				
 				$('#sfile').attr("value",sold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
@@ -634,14 +634,14 @@ $("input[name=myRadio5]").mouseup(function() {
 				
 				$('#nfile').attr("value",nold);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var nold = noldValue - 10;
 				$('#nfile').attr("value",nold);
 				var sold = soldValue - 10;
 				$('#sfile').attr("value",sold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var nold = noldValue - 20;
 				$('#nfile').attr("value",nold);
 			} else {
@@ -654,25 +654,25 @@ $("input[name=myRadio5]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = sold + 20;
 				$('#sfile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = nold + 10;
 				$('#nfile').attr("value",number);
 				var number = sold + 10;
 				$('#sfile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = nold + 20;
 				$('#nfile').attr("value",number);
 		} else {
@@ -738,15 +738,10 @@ function sbutton2() {
 				},
 		success : function(data) {
 			
-			//var values = Object.values(data);
 			
-			
-			//if(data['ajaxresult'] == 7){
 			
 			console.log('성공!!');
-			//} else {
-				
-			//}
+			
 		},
 		error: function(data) {
 			alert('ajax 실패!');
