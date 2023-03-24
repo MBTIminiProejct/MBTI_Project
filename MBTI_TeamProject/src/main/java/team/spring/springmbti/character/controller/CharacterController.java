@@ -19,8 +19,6 @@ import team.spring.springmbti.user.vo.User;
 @SessionAttributes(value= {"myUser"})
 public class CharacterController {
 	
-	@Autowired
-	private CharacterService service;
 	
 	Logger log = LogManager.getLogger("case3");
 	

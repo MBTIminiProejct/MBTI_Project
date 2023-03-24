@@ -28,7 +28,6 @@ import team.spring.springmbti.user.vo.User;
 
 @RestController
 @RequestMapping(value = "battle",produces = "application/json")
-//@SessionAttributes(value= { "myCharacter","myUser","battleCharacter","battleUser" })
 public class BattleController {
 
 	Logger log = LogManager.getLogger("case3");
@@ -48,31 +47,21 @@ public class BattleController {
 			required=false) String userNum, @RequestParam(value="battleUserNum", 
 			required=false) String battleUserNum) throws JsonProcessingException {
 		
-		log.debug("들어온건가");
 		User myUser = uService.getUserInfo(userNum);
 	    CharacterInfo myCharacter = cService.getCharacter(myUser.getUserCharacter());
 	    log.debug(myUser);
 	    log.debug(myCharacter);
 	    
-		CharacterInfo battleCharacter = cService.getCharacter(Integer.valueOf(battleUserNum));
 		User battleUser = uService.getUserInfo(battleUserNum);
-		log.debug(battleUser);
-	    log.debug(battleCharacter);
+		CharacterInfo battleCharacter = cService.getCharacter(Integer.valueOf(battleUserNum));
 		
 		BattleLog battleLog = service.prepBattle(myCharacter, battleCharacter, myUser, battleUser, battleField);
+		
 		ObjectMapper mapper = new ObjectMapper();
 	    String battleLogInfo = mapper.writeValueAsString(battleLog);
 		return battleLogInfo;
 	}
 	
-//	@GetMapping(value = "searchBattleUser")
-//	public String searchBattleUser(HttpSession session) {
-//		
-//		User user = (User)session.getAttribute("myUser");
-//		// 내캐릭터 받아오기
-//		log.debug(user);
-//		return "searchBattleUser";
-//	}
 	
 	@GetMapping(value = "ranking")
 	public JSONArray getRanking() {

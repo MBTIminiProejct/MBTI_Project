@@ -96,7 +96,6 @@ public class MyPageController {
 		Logger log = LogManager.getLogger("case3");
 		
 		boolean checkUser = loginservice.checkExistUser(battleUserNum);
-		log.debug(checkUser);
 		Map<String, String> map = new HashMap<String, String>();
 		
 		if (!checkUser) {
@@ -108,7 +107,6 @@ public class MyPageController {
 			user = service.getUserInfo(battleUserNum);
 			CharacterInfo character = new CharacterInfo();
 			character = cService.getCharacter(user.getUserCharacter());
-
 			
 			ObjectMapper mapper = new ObjectMapper();
 		    String competionUserInfo = mapper.writeValueAsString(user);
@@ -119,7 +117,6 @@ public class MyPageController {
 			return map;
 		}
 	}
-
 	
 	@GetMapping(value ="useraccpet")
 	public String changeUserAeccpet(@RequestParam(value="userNum",
