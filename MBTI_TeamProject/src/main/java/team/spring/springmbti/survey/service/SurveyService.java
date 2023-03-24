@@ -9,9 +9,6 @@ import team.spring.springmbti.survey.dao.SurveyDao;
 import team.spring.springmbti.user.vo.User;
 
 
-
-
-
 @Service
 public class SurveyService {
 	

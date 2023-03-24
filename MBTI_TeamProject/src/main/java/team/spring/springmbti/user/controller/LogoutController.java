@@ -30,16 +30,16 @@ public class LogoutController {
         String access_Token = (String)session.getAttribute("access_Token");
 
         if(access_Token != null && !"".equals(access_Token)){
-//        	kakaoservice.kakaoLogout(access_Token);
+
         	kakaoservice.unlink(access_Token);
             session.removeAttribute("access_Token");
             session.removeAttribute("myUser");
             log.debug("로그아웃 성공");
         }else{
             System.out.println("access_Token is null");
-            //return "redirect:/";
+            
         }
-        //return "index";
+        
         return "redirect:/resources/main.html";
     }
 	

@@ -92,9 +92,6 @@ public class SurveyController {
    public Map<String, String> handler02(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler02() 성공");
-      //request.setCharacterEncoding("UTF-8");
-      //int qnum = Integer.parseInt(request.getParameter("qnum"));
-      //int onum = Integer.parseInt(request.getParameter("onum"));
       log.debug(cnum);
       log.debug(onum);
       Map<String, String> map = new HashMap<String, String>();
@@ -107,9 +104,6 @@ public class SurveyController {
    public Map<String, String> handler03(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler03() 성공");
-      //request.setCharacterEncoding("UTF-8");
-      //int qnum = Integer.parseInt(request.getParameter("qnum"));
-      //int onum = Integer.parseInt(request.getParameter("onum"));
       log.debug(cnum);
       log.debug(onum);
       Map<String, String> map = new HashMap<String, String>();
@@ -122,9 +116,6 @@ public class SurveyController {
    public Map<String, String> handler04(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler04() 성공");
-      //request.setCharacterEncoding("UTF-8");
-      //int qnum = Integer.parseInt(request.getParameter("qnum"));
-      //int onum = Integer.parseInt(request.getParameter("onum"));
       log.debug(cnum);
       log.debug(onum);
       Map<String, String> map = new HashMap<String, String>();
@@ -150,10 +141,6 @@ public class SurveyController {
       int nqtotal = total*-1;
       log.debug("userEmail!!!!!!!"+email);
    
-//      user = (User)session.getAttribute("myUser");
-//      log.debug(user);
-//      user.setUserI(nqtotal);
-//      user.setUserE(qtotal);
       User user = new User();
       user.setUserEmail(email);
       user.setUserI(nqtotal);
@@ -189,9 +176,6 @@ public class SurveyController {
       user.setUserN(nqtotal);
       user.setUserS(qtotal);
       
-      
-      //session.setAttribute("myUser", user);
-      //model.addAttribute("myUser", user);
       surveyservice.updateScoreTwo(user);
       
       Map<String, Integer> map = new HashMap<String, Integer>();
@@ -221,9 +205,6 @@ public class SurveyController {
       user.setUserT(nqtotal);
       user.setUserF(qtotal);
       
-      
-      //session.setAttribute("myUser", user);
-      //model.addAttribute("myUser", user);
       surveyservice.updateScoreThree(user);
       
       Map<String, Integer> map = new HashMap<String, Integer>();
@@ -297,9 +278,7 @@ public class SurveyController {
       mbti = typeone + typetwo + typethree + typefour;
       user.setUserMBTI(mbti);
       surveyservice.updateScoreFour(user);
-      
-//      User userbefore = (User)session.getAttribute("myUser");
-//      int before = (Integer) session.getAttribute("before");
+     
       if (speed == 2) {
       CharacterInfo character = 
             new CharacterInfo(100, 10, 10, 5 , 5 , 11, 10 , 10 , 30  ,0 );
@@ -332,8 +311,6 @@ public class SurveyController {
         
         characterinfo = characterservice.getCharacter(characternum);
         
-//        session.setAttribute("myCharacter", characterinfo);
-//         characterinfo = (CharacterInfo)session.getAttribute("myCharacter");
         log.debug("생성된 캐릭터!!!!!!!!!!!!!!!!"+characterinfo);
       
       ObjectMapper mapper = new ObjectMapper();
@@ -360,275 +337,7 @@ public class SurveyController {
       return map;
    }
    
-//   @GetMapping("/partfour/sbuttonfour")
-//   public Map<String, Object> handler004(@RequestParam(value="qone", required=false) int qone, @RequestParam(value="qtwo", required=false) int qtwo, 
-//         @RequestParam(value="qthree", required=false) int qthree, @RequestParam(value="qfour", required=false) int qfour,
-//         @RequestParam(value="qfive", required=false) int qfive,
-//         Model model, User user, CharacterInfo characterinfo,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler001() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      log.debug(qone);
-//      int qtotal = qone + qtwo + qthree + qfour + qfive;
-//      int total = qtotal - 15;
-//      int nqtotal = total*-1;
-//      
-//      user = (User)session.getAttribute("myUser");
-////      String email = new String();
-////      email = "okay@naver.com";
-////      user.setUserEmail(email);
-//      user.setUserP(nqtotal);
-//      user.setUserJ(qtotal);
-//      String typeone = new String();
-//      String typetwo = new String();
-//      String typethree = new String();
-//      String typefour = new String();
-//      String mbti = new String();
-//      
-//      int lone = user.getUserE();
-//      int ltwo = user.getUserI();
-//      int lthree = user.getUserS();
-//      int lfour = user.getUserN();
-//      int lfive = user.getUserF();
-//      int lsix = user.getUserT();
-//      int lseven = user.getUserJ();
-//      int leight = user.getUserP();
-//      
-//      if (lone > ltwo) {
-//         typeone = "E";
-//      } else {
-//         typeone = "I";
-//      }
-//      
-//      if (lthree > lfour) {
-//         typetwo = "S";
-//      } else {
-//         typetwo = "N";
-//      }
-//
-//      if (lfive > lsix) {
-//         typethree = "F";
-//      } else {
-//         typethree = "T";
-//      }
-//      
-//      if (lseven > leight) {
-//         typefour = "J";
-//      } else {
-//         typefour = "P";
-//      }
-//      
-//      mbti = typeone + typetwo + typethree + typefour;
-//      user.setUserMBTI(mbti);
-//      //model.addAttribute("myUser", user);
-//      surveyservice.updateScoreFour(user);
-//      
-//      User userbefore = (User)session.getAttribute("myUser");
-//      CharacterInfo character = 
-//            new CharacterInfo(100, 10, 10, 5 , 5 , 10, 10 , 10 , 30  ,0 );
-//      int result = characterservice.createCharacter(character);
-//      log.debug("잘되고있는거니");
-//      
-//      int maxresult = characterservice.maxCharacter();
-//      
-//      userbefore.setUserCharacter(maxresult); 
-//      
-//      
-//      User usercurrent = (User)session.getAttribute("myUser");
-//        int characternum = usercurrent.getUserCharacter();
-//        log.debug(characternum);
-//        //CharacterInfo characterinfo = new CharacterInfo();
-//        //characterinfo.setCharacterNum(characternum);   
-//        //log.debug(characterinfo);
-//        // 최신 캐릭터 num을 user계정에 반영해줘야 함
-//        
-//        surveyservice.updateUserCharacter(user);
-//        
-//        characterinfo = 
-//            new CharacterInfo(characternum,100, 10 + lone, 10 + ltwo, 5 + lthree, 5 + lfour, 10, 10 + lfive, 10 + lsix, 30 + lseven ,0 + leight);
-//         int characterresult = characterservice.updateCharacter(characterinfo);
-//        
-//        characterinfo = characterservice.getCharacter(characternum);
-//        
-//        session.setAttribute("myCharacter", characterinfo);
-//         characterinfo = (CharacterInfo)session.getAttribute("myCharacter");
-//        log.debug(characterinfo);
-//      
-//      Map<String, Object> map = new HashMap<String, Object>();
-//      map.put("mbti", mbti);
-//      map.put("Character", characterinfo.getCharacterNum());
-//      //map.put("test", 11);
-//      map.put("HP", characterinfo.getCharacterHP());
-//      map.put("AD", characterinfo.getCharacterAD());
-//      map.put("AP", characterinfo.getCharacterAP());
-//      map.put("ADDefence", characterinfo.getCharacterADDefence());
-//      map.put("APDefence", characterinfo.getCharacterAPDefence());
-//      map.put("Speed", characterinfo.getCharacterSpeed());
-//      map.put("HitRate", characterinfo.getCharacterHitRate());
-//      map.put("AvoidanceRate", characterinfo.getCharacterAvoidanceRate());
-//      map.put("Critical", characterinfo.getCharacterCritical());
-//      map.put("AdditionalDmg", characterinfo.getCharacterAdditionalDmg());
-//      return map;
-//   }
-   
-//   @PutMapping("sbutton1")
-//   public void handler001(Model model, @ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler001() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      int qone = Integer.parseInt(request.getParameter("qone"));
-//      int qtwo = Integer.parseInt(request.getParameter("qtwo"));
-//      int qthree = Integer.parseInt(request.getParameter("qthree"));
-//      int qfour = Integer.parseInt(request.getParameter("qfour"));
-//      int qfive = Integer.parseInt(request.getParameter("qfive"));
-//      int qtotal = qone + qtwo + qthree + qfour + qfive;
-//      int total = qtotal - 15;
-//      int nqtotal = total*-1;
-//      
-//      //user = (User)session.getAttribute("myUser");
-//      user.setUserI(nqtotal);
-//      user.setUserE(qtotal);
-//      log.debug(user);
-//      
-//      // session.setAttribute("myUser", user);
-//      model.addAttribute("myUser", user);
-//      surveyservice.updateScoreOne(user);
-//      
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qone", qone);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }
-   
-//   @PutMapping("sbutton2")
-//   public void handler002(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler002() 괜찮슴");
-//      request.setCharacterEncoding("UTF-8");
-//      int qone = Integer.parseInt(request.getParameter("qone"));
-//      int qtwo = Integer.parseInt(request.getParameter("qtwo"));
-//      int qthree = Integer.parseInt(request.getParameter("qthree"));
-//      int qfour = Integer.parseInt(request.getParameter("qfour"));
-//      int qfive = Integer.parseInt(request.getParameter("qfive"));
-//      int qtotal = qone + qtwo + qthree + qfour + qfive;
-//      int total = qtotal - 15;
-//      int nqtotal = total*-1;
-//      
-//      //user = (User)session.getAttribute("myUser");
-//      user.setUserN(nqtotal);
-//      user.setUserS(qtotal);
-//      
-//      //session.setAttribute("myUser", user);
-//      log.debug(user);
-//      model.addAttribute("myUser", user);
-//      surveyservice.updateScoreTwo(user);
-//      
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qone", qone);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }
-//   
-//   @PutMapping("sbutton3")
-//   public void handler003(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      log.debug("handler003() 성공");
-//      request.setCharacterEncoding("UTF-8");
-//      int qone = Integer.parseInt(request.getParameter("qone"));
-//      int qtwo = Integer.parseInt(request.getParameter("qtwo"));
-//      int qthree = Integer.parseInt(request.getParameter("qthree"));
-//      int qfour = Integer.parseInt(request.getParameter("qfour"));
-//      int qfive = Integer.parseInt(request.getParameter("qfive"));
-//      int qtotal = qone + qtwo + qthree + qfour + qfive;
-//      int total = qtotal - 15;
-//      int nqtotal = total*-1;
-//      
-//      //user = (User)session.getAttribute("myUser");
-//      user.setUserT(nqtotal);
-//      user.setUserF(qtotal);
-//      
-//      //session.setAttribute("myUser", user);
-//      log.debug(user);
-//      model.addAttribute("myUser", user);
-//      surveyservice.updateScoreThree(user);
-//      
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qone", qone);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }
-//   
-//   @PutMapping("sbutton4")
-//   public void handler004(Model model,@ModelAttribute("myUser") User user, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//      request.setCharacterEncoding("UTF-8");
-//      int qone = Integer.parseInt(request.getParameter("qone"));
-//      int qtwo = Integer.parseInt(request.getParameter("qtwo"));
-//      int qthree = Integer.parseInt(request.getParameter("qthree"));
-//      int qfour = Integer.parseInt(request.getParameter("qfour"));
-//      int qfive = Integer.parseInt(request.getParameter("qfive"));
-//      int qtotal = qone + qtwo + qthree + qfour + qfive;
-//      int total = qtotal - 15;
-//      int nqtotal = total*-1;
-//      String typeone = new String();
-//      String typetwo = new String();
-//      String typethree = new String();
-//      String typefour = new String();
-//      String mbti = new String();
-//      
-//      user.setUserP(nqtotal);
-//      user.setUserJ(qtotal);
-//      model.addAttribute("myUser", user);
-//      User usertotal = (User)session.getAttribute("myUser");
-//      //session.setAttribute("myUser", user);
-//      
-//      int lone = usertotal.getUserE();
-//      int ltwo = usertotal.getUserI();
-//      int lthree = usertotal.getUserS();
-//      int lfour = usertotal.getUserN();
-//      int lfive = usertotal.getUserF();
-//      int lsix = usertotal.getUserT();
-//      int lseven = usertotal.getUserJ();
-//      int leight = usertotal.getUserP();
-//      
-//      if (lone > ltwo) {
-//         typeone = "E";
-//      } else {
-//         typeone = "I";
-//      }
-//      
-//      if (lthree > lfour) {
-//         typetwo = "S";
-//      } else {
-//         typetwo = "N";
-//      }
-//
-//      if (lfive > lsix) {
-//         typethree = "F";
-//      } else {
-//         typethree = "T";
-//      }
-//      
-//      if (lseven > leight) {
-//         typefour = "J";
-//      } else {
-//         typefour = "P";
-//      }
-//      
-//      mbti = typeone + typetwo + typethree + typefour;
-//      user.setUserMBTI(mbti);
-//      surveyservice.updateScoreFour(user);
-//      log.debug(user);
-//      
-//      CharacterInfo character = 
-//            new CharacterInfo(usertotal.getUserCharacter(),100, 10 + lone, 10 + ltwo, 5 + lthree, 5 + lfour, 10, 10 + lfive, 10 + lsix, 30 + lseven ,0 + leight);
-//      int characterresult = characterservice.updateCharacter(character);
-//      log.debug("안녕");
-//      
-//      Gson gson = new Gson();
-//      JsonObject jsonObject = new JsonObject();
-//      jsonObject.addProperty("qone", qone);
-//      String find = gson.toJson(jsonObject);
-//      response.getWriter().write(find);
-//   }
+
       
       
    

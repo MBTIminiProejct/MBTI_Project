@@ -11,9 +11,4 @@ public class MBTIController {
 		return "myPage";
 	}
 	
-//	@GetMapping("share")
-//	public String kakaoShare() {
-//		
-//		return "resultPage";
-//	}
 }

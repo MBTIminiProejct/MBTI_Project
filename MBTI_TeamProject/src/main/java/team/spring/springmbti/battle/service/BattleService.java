@@ -1,6 +1,5 @@
 package team.spring.springmbti.battle.service;
 
-import java.util.List;
 import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
@@ -77,7 +76,7 @@ public class BattleService {
 		Logger log = LogManager.getLogger("case3");
 		
 		Random random = new Random();
-//		random.setSeed(System.currentTimeMillis());
+
 		
 		double dmg = 0;
 		double critical = 0;
@@ -109,7 +108,7 @@ public class BattleService {
 		Logger log = LogManager.getLogger("case3");
 		
 		Random random = new Random();
-//		random.setSeed(System.currentTimeMillis());
+
 		
 		double dmg = 0;
 		double critical = 0;
@@ -186,7 +185,7 @@ public class BattleService {
 			defenceCharacter.setCharacterAvoidanceRate(defenceCharacter.getCharacterAvoidanceRate() + 10);
 		}
 		bLog.append("======= 꿈속에서 F의 감수성이 더욱 예민하게 반응합니다 =======\n");
-		bLog.append("======= F의 모든 공격력, 크리티컬확률, 회피율, 명중률이 상승합니다\n. 모든 방어력이만큼 감소합니다. =======\n");
+		bLog.append("======= F의 모든 공격력, 크리티컬확률, 회피율, 명중률이 상승합니다. 모든 방어력이만큼 감소합니다. =======\n");
 		if (mbtiC[2].equals("F")) {
 			bLog.append("====" + challengerName + "의 모든 공격력이 +3 만큼 상승, 모든 방어력이 - 3 만큼 감소합니다. ==== \n");
 			bLog.append("====" + challengerName + "의 크리티컬확률, 회피율, 명중률이 7씩 상승합니다. ==== \n");
@@ -212,7 +211,7 @@ public class BattleService {
 		
 		bLog.append("\n \n");
 		for(int cnt = 1; cnt <= 10; cnt++) {
-			// 속도비교 도전자가빠를때만 선공 같을경우도 방어자 선공
+			
 			if (challengeCharacter.getCharacterSpeed() > defenceCharacter.getCharacterSpeed()) {
 				if (cnt != 0) {
 					bLog.append("\n");
@@ -359,7 +358,7 @@ public class BattleService {
 		
 		bLog.append("\n \n");
 		for(int cnt = 1; cnt <= 10; cnt++) {
-			// 속도비교 도전자가빠를때만 선공 같을경우도 방어자 선공
+			
 			if (challengeCharacter.getCharacterSpeed() > defenceCharacter.getCharacterSpeed()) {
 				if (cnt != 0) {
 					bLog.append("\n");
@@ -530,7 +529,7 @@ public class BattleService {
 		
 		bLog.append("\n \n");
 		for(int cnt = 1; cnt <= 10; cnt++) {
-			// 속도비교 도전자가빠를때만 선공 같을경우도 방어자 선공
+			
 			if (challengeCharacter.getCharacterSpeed() > defenceCharacter.getCharacterSpeed()) {
 				if (cnt != 0) {
 					bLog.append("\n");
@@ -647,7 +646,7 @@ public class BattleService {
 		double apDmg = 0;
 		BattleLog battleLog = new BattleLog();
 		for(int cnt = 1; cnt <= 10; cnt++) {
-			// 속도비교 도전자가빠를때만 선공 같을경우도 방어자 선공
+			
 			if (challengeCharacter.getCharacterSpeed() > defenceCharacter.getCharacterSpeed()) {
 				if (cnt != 0) {
 					bLog.append("\n");
@@ -792,7 +791,7 @@ public class BattleService {
 		}
 		bLog.append("\n \n");
 		for(int cnt = 1; cnt <= 10; cnt++) {
-			// 속도비교 도전자가빠를때만 선공 같을경우도 방어자 선공
+			
 			
 			if (challengeCharacter.getCharacterSpeed() > defenceCharacter.getCharacterSpeed()) {
 				if (cnt != 0) {

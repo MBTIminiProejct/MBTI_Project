@@ -15,7 +15,6 @@ public class CORSFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
 		Filter.super.init(filterConfig);
 	}
 
@@ -25,7 +24,6 @@ public class CORSFilter implements Filter{
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpServletRequest request = (HttpServletRequest) req;
 		String origin = request.getHeader("origin");
-//		response.setHeader("Access-Control-Allow-Origin", "http://e8e4-123-142-252-26.ngrok.io");
 		response.setHeader("Access-Control-Allow-Origin", origin);
 		response.setHeader("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT"); 
 		response.setHeader("Access-Control-Max-Age", "3600"); 

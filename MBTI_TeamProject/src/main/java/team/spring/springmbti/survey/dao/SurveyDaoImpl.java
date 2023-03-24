@@ -24,12 +24,12 @@ public class SurveyDaoImpl implements SurveyDao {
 	public int updateSurveyOne(User user) {
 		int result = session.update("mySurvey.updatesurveyone",user);
 		if(result==1) {
-			//session.commit();
+			
 			log.debug("성공!");
 		} else {
 			log.debug("실패!");
 		}
-		//session.close();
+		
 		return result;
 	}
 	
@@ -37,12 +37,12 @@ public class SurveyDaoImpl implements SurveyDao {
 	public int updateSurveyTwo(User user) {
 		int result = session.update("mySurvey.updatesurveytwo",user);
 		if(result==1) {
-			//session.commit();
+			
 			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
-		//session.close();
+		
 		return result;
 	}
 	
@@ -50,12 +50,12 @@ public class SurveyDaoImpl implements SurveyDao {
 	public int updateSurveyThree(User user) {
 		int result = session.update("mySurvey.updatesurveythree",user);
 		if(result==1) {
-			//session.commit();
+			
 			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
-		//session.close();
+		
 		return result;
 	}
 	
@@ -63,12 +63,12 @@ public class SurveyDaoImpl implements SurveyDao {
 	public int updateSurveyFour(User user) {
 		int result = session.update("mySurvey.updatesurveyfour",user);
 		if(result==1) {
-			//session.commit();
+			
 			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
-		//session.close();
+		
 		return result;
 	}
 	
@@ -76,12 +76,12 @@ public class SurveyDaoImpl implements SurveyDao {
 	public int updateUserCharacter(User user) {
 		int result = session.update("myUser.updateUserCharacter",user);
 		if(result==1) {
-			//session.commit();
+			
 			log.debug("성공!");
 		} else {
 			log.debug("����!");
 		}
-		//session.close();
+		
 		return result;
 	}
 	
