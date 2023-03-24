@@ -125,12 +125,12 @@ $("input[name=myRadio1]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var fold = foldValue - 20;
 				
 				$('#ffile').attr("value",fold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
@@ -138,14 +138,14 @@ $("input[name=myRadio1]").mouseup(function() {
 				
 				$('#tfile').attr("value",told);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var told = toldValue - 10;
 				$('#tfile').attr("value",told);
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var told = toldValue - 20;
 				$('#tfile').attr("value",told);
 			} else {
@@ -158,25 +158,25 @@ $("input[name=myRadio1]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = fold + 20;
 				$('#ffile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = told + 20;
 				$('#tfile').attr("value",number);
 		} else {
@@ -249,12 +249,12 @@ $("input[name=myRadio2]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var fold = foldValue - 20;
 				
 				$('#ffile').attr("value",fold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
@@ -262,14 +262,14 @@ $("input[name=myRadio2]").mouseup(function() {
 				
 				$('#tfile').attr("value",told);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var told = toldValue - 10;
 				$('#tfile').attr("value",told);
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var told = toldValue - 20;
 				$('#tfile').attr("value",told);
 			} else {
@@ -282,25 +282,25 @@ $("input[name=myRadio2]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = fold + 20;
 				$('#ffile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = told + 20;
 				$('#tfile').attr("value",number);
 		} else {
@@ -373,12 +373,12 @@ $("input[name=myRadio3]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var fold = foldValue - 20;
 				
 				$('#ffile').attr("value",fold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
@@ -386,14 +386,14 @@ $("input[name=myRadio3]").mouseup(function() {
 				
 				$('#tfile').attr("value",told);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var told = toldValue - 10;
 				$('#tfile').attr("value",told);
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var told = toldValue - 20;
 				$('#tfile').attr("value",told);
 			} else {
@@ -406,25 +406,25 @@ $("input[name=myRadio3]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = fold + 20;
 				$('#ffile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = told + 20;
 				$('#tfile').attr("value",number);
 		} else {
@@ -497,12 +497,12 @@ $("input[name=myRadio4]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var fold = foldValue - 20;
 				
 				$('#ffile').attr("value",fold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
@@ -510,14 +510,14 @@ $("input[name=myRadio4]").mouseup(function() {
 				
 				$('#tfile').attr("value",told);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var told = toldValue - 10;
 				$('#tfile').attr("value",told);
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var told = toldValue - 20;
 				$('#tfile').attr("value",told);
 			} else {
@@ -530,25 +530,25 @@ $("input[name=myRadio4]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = fold + 20;
 				$('#ffile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = told + 20;
 				$('#tfile').attr("value",number);
 		} else {
@@ -621,12 +621,12 @@ $("input[name=myRadio5]").mouseup(function() {
 			var values = Object.values(data);
 			
 			if (data['onum'] == 3) {
-				//console.log('3');
+				
 				var fold = foldValue - 20;
 				
 				$('#ffile').attr("value",fold);
 			} else if (data['onum'] == 2) {
-				//console.log('2');
+				
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
@@ -634,14 +634,14 @@ $("input[name=myRadio5]").mouseup(function() {
 				
 				$('#tfile').attr("value",told);
 			} else if (data['onum'] == 1) {
-				//console.log('1');
+				
 				var told = toldValue - 10;
 				$('#tfile').attr("value",told);
 				var fold = foldValue - 10;
 				$('#ffile').attr("value",fold);	
 				
 			} else if (data['onum'] == 0) {
-				//console.log('0');
+				
 				var told = toldValue - 20;
 				$('#tfile').attr("value",told);
 			} else {
@@ -654,25 +654,25 @@ $("input[name=myRadio5]").mouseup(function() {
 			
 			
 			if(data['qnum']==3) {
-				//console.log('3');
+				
 				var number = fold + 20;
 				$('#ffile').attr("value",number);
 			} else if(data['qnum']==2) {
-				//console.log('2');
+				
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				
 			} else if(data['qnum']==1) {
-				//console.log('1');
+				
 				var number = told + 10;
 				$('#tfile').attr("value",number);
 				var number = fold + 10;
 				$('#ffile').attr("value",number);
 				
 			} else if(data['qnum']==0) {
-				//console.log('0');
+				
 				var number = told + 20;
 				$('#tfile').attr("value",number);
 		} else {
@@ -738,15 +738,10 @@ function sbutton3() {
 				},
 		success : function(data) {
 			
-			//var values = Object.values(data);
 			
-			
-			//if(data['ajaxresult'] == 7){
 			
 			console.log('성공!!');
-			//} else {
-				
-			//}
+			
 		},
 		error: function(data) {
 			alert('ajax 실패!');

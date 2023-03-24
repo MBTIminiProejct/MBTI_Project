@@ -26,7 +26,6 @@ import team.spring.springmbti.character.vo.CharacterInfo;
 import team.spring.springmbti.mbti.service.MBTIService;
 import team.spring.springmbti.mbti.vo.MBTIResult;
 import team.spring.springmbti.survey.service.SurveyService;
-import team.spring.springmbti.survey.vo.SurveyBack;
 import team.spring.springmbti.user.service.LoginService;
 import team.spring.springmbti.user.vo.User;
 
@@ -38,8 +37,8 @@ import team.spring.springmbti.user.vo.User;
 @RequestMapping(value = "survey",produces="application/json")
 public class SurveyController {
    
-	@Autowired
-	private LoginService loginservice;
+   @Autowired
+   private LoginService loginservice;
 	
    @Autowired
    private SurveyService surveyservice;
@@ -57,7 +56,7 @@ public class SurveyController {
    @GetMapping("/fast")
    public Map<String, Integer> beforefast(@RequestParam(value="fast", required=false) int fast, HttpSession session) {
       log.debug("fast 성공");
-      log.debug(fast);
+      
       session.setAttribute("before", fast);
       Map<String, Integer> map = new HashMap<String, Integer>();
       map.put("fast", fast);
@@ -68,7 +67,7 @@ public class SurveyController {
    @GetMapping("/slow")
    public Map<String, Integer> beforeslow(@RequestParam(value="slow", required=false) int slow, HttpSession session) {
       log.debug("slow 성공");
-      log.debug(slow);
+      
       session.setAttribute("before", slow);
       Map<String, Integer> map = new HashMap<String, Integer>();
       map.put("slow", slow);
@@ -80,8 +79,7 @@ public class SurveyController {
    public Map<String, String> handler01(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler01() 성공");
-      log.debug(cnum);
-      log.debug(onum);
+     
       Map<String, String> map = new HashMap<String, String>();
       map.put("cnum", cnum);
       map.put("onum", onum);
@@ -92,8 +90,7 @@ public class SurveyController {
    public Map<String, String> handler02(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler02() 성공");
-      log.debug(cnum);
-      log.debug(onum);
+    
       Map<String, String> map = new HashMap<String, String>();
       map.put("cnum", cnum);
       map.put("onum", onum);
@@ -104,8 +101,7 @@ public class SurveyController {
    public Map<String, String> handler03(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler03() 성공");
-      log.debug(cnum);
-      log.debug(onum);
+     
       Map<String, String> map = new HashMap<String, String>();
       map.put("cnum", cnum);
       map.put("onum", onum);
@@ -116,8 +112,7 @@ public class SurveyController {
    public Map<String, String> handler04(@RequestParam(value="cnum", required=false) String cnum,
          @RequestParam(value="onum", required=false) String onum) {
       log.debug("handler04() 성공");
-      log.debug(cnum);
-      log.debug(onum);
+     
       Map<String, String> map = new HashMap<String, String>();
       map.put("cnum", cnum);
       map.put("onum", onum);
@@ -131,15 +126,14 @@ public class SurveyController {
          @RequestParam(value="qthree", required=false) int qthree, @RequestParam(value="qfour", required=false) int qfour,
          @RequestParam(value="qfive", required=false) int qfive,
          @RequestParam(value="email", required=false) String email,
-         Model model,SurveyBack surveyback, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       log.debug("handler001() 성공");
       request.setCharacterEncoding("UTF-8");
-      log.debug(qone);
+      
       int qtotal = qone + qtwo + qthree + qfour + qfive;
-      log.debug(qtotal);
       int total = qtotal - 15;
       int nqtotal = total*-1;
-      log.debug("userEmail!!!!!!!"+email);
+      log.debug("userEmail!"+email);
    
       User user = new User();
       user.setUserEmail(email);
@@ -165,14 +159,14 @@ public class SurveyController {
          Model model,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       log.debug("handler002() 성공");
       request.setCharacterEncoding("UTF-8");
-      log.debug(qone);
+      
       int qtotal = qone + qtwo + qthree + qfour + qfive;
       int total = qtotal - 15;
       int nqtotal = total*-1;
       
       User user = new User();
       user.setUserEmail(email);
-      log.debug("2번째 이메일!!!!!1"+email);
+      
       user.setUserN(nqtotal);
       user.setUserS(qtotal);
       
@@ -193,7 +187,6 @@ public class SurveyController {
          Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       log.debug("handler003() 성공");
       request.setCharacterEncoding("UTF-8");
-      log.debug(qone);
       int qtotal = qone + qtwo + qthree + qfour + qfive;
       int total = qtotal - 15;
       int nqtotal = total*-1;
@@ -201,7 +194,6 @@ public class SurveyController {
       
       User user = new User();
       user.setUserEmail(email);
-      log.debug(user);
       user.setUserT(nqtotal);
       user.setUserF(qtotal);
       
@@ -223,7 +215,6 @@ public class SurveyController {
          Model model, CharacterInfo characterinfo,HttpSession session, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, JsonProcessingException {
       log.debug("handler004() 성공");
       request.setCharacterEncoding("UTF-8");
-      log.debug(qone);
       int qtotal = qone + qtwo + qthree + qfour + qfive;
       int total = qtotal - 15;
       int nqtotal = total*-1;
@@ -231,7 +222,6 @@ public class SurveyController {
       User user = new User();
       user.setUserEmail(email);
       user = loginservice.getUser(email);
-      log.debug(user);
       user.setUserP(nqtotal);
       user.setUserJ(qtotal);
       String typeone = new String();
@@ -280,10 +270,10 @@ public class SurveyController {
       surveyservice.updateScoreFour(user);
      
       if (speed == 2) {
-      CharacterInfo character = 
-            new CharacterInfo(100, 10, 10, 5 , 5 , 11, 10 , 10 , 30  ,0 );
+          CharacterInfo character = 
+                    new CharacterInfo(100, 10, 10, 5 , 5 , 11, 10 , 10 , 30  ,0 );
       
-      int result = characterservice.createCharacter(character);
+          int result = characterservice.createCharacter(character);
       } else {
     	  CharacterInfo character = 
     	            new CharacterInfo(100, 10, 10, 5 , 5 , 9, 10 , 10 , 30  ,0 );  
@@ -291,7 +281,6 @@ public class SurveyController {
     	  int result = characterservice.createCharacter(character);
       }
       
-      log.debug("잘되고있는거니");
       
       int maxresult = characterservice.maxCharacter();
       
@@ -300,7 +289,7 @@ public class SurveyController {
       
       
         int characternum = user.getUserCharacter();
-        log.debug(characternum);
+        
         
         
         surveyservice.updateUserCharacter(user);
@@ -311,7 +300,7 @@ public class SurveyController {
         
         characterinfo = characterservice.getCharacter(characternum);
         
-        log.debug("생성된 캐릭터!!!!!!!!!!!!!!!!"+characterinfo);
+        log.debug("생성된 캐릭터!"+characterinfo);
       
       ObjectMapper mapper = new ObjectMapper();
       String characterInfo = mapper.writeValueAsString(characterinfo);
@@ -333,7 +322,7 @@ public class SurveyController {
        Map<String,String> map = new HashMap<String, String>();
        map.put("mbtiInfo", mbtiInfo);
        
-       log.debug("제발");
+       
       return map;
    }
    
